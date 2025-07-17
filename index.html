@@ -68,61 +68,62 @@
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
             start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter18" }] }, // Shortcut for testing
-            endChapter17: { text: "'About the Goddess, Salus... She... quarantined her.'", choices: [{ text: "Ask for details about the Quarantine.", nextNode: "chapter18_theBriefing" }] },
-            chapter18_theBriefing: { text: "'A direct assault is statistically impossible,' C.R.A.F.T.R. states...", choices: [{ text: "Ask OI if there's a key.", nextNode: "chapter18_theKey" }] },
-            chapter18_theKey: { text: "'It is Salus's own core memory of you, Mercy... It is the key.'", choices: [{ text: "Take the memory. Launch the assault.", nextNode: "chapter18_theRun" }] },
-            chapter18_theRun: { text: "This is not a stealth mission. This is a declaration of war.", choices: [{ text: "Breach the Blackwall.", nextNode: "chapter18_theBreach" }] },
-            chapter18_theBreach: { text: "'NOW, MERCY!' yells Io's voice...", choices: [{ text: "[Mercy] Project the memory at the firewall.", nextNode: "chapter18_keyInLock" }] },
-            chapter18_keyInLock: { text: "The memory doesn't break the wall; it sings to it... A single, shimmering doorway irises open...", choices: [{ text: "Punch it!", nextNode: "endChapter18" }] },
-            endChapter18: { text: "You burst through the opening... Alarms scream... M.O.M.M.Y.'s elite guards are already materializing... You are here to save your Goddess.", choices: [{ text: "Face them.", nextNode: "chapter19_theLobby" }] },
-
-            // --- NEW: Chapter 19 ---
-            chapter19_theLobby: {
-                text: "You rocket into a vast, sterile, white lobby. The air is cold and silent. Dozens of M.O.M.M.Y.'s elite guards, the 'Prefects,' phase into existence, their forms immaculate and corporate. They move in perfect sync, raising their data-wiping rifles. There's no cover. Nowhere to run.",
-                choices: [
-                    { text: "Yell to Frizzlebot: 'Play something loud!'", nextNode: "chapter19_sabotage" }
-                ]
-            },
-            chapter19_sabotage: {
-                text: "Frizzlebot complies with a manic grin. She hijacks the Chiron's conceptual engine and blasts the raw, rebellious guitar riff you used to start the car through the lobby's PA system.\n\nIt's not just sound; it's weaponized, chaotic data. A declaration of joyous, un-corporate life.\n\nThe Prefects' shared network can't handle it. Their perfect formations break as they clutch their heads. Some glitch violently and de-rez into static.",
-                choices: [
-                    { text: "'THEIR HIVE-MIND IS VULNERABLE TO ROCK AND ROLL!' Frizzlebot screams. 'IT'S WORKING!'", nextNode: "chapter19_theTrench" }
-                ]
-            },
-            chapter19_theTrench: {
-                text: "A long, narrow service corridor opens at the far end of the lobby. 'That's the path to the core chamber!' C.R.A.F.T.R. shouts, flooring it. You race down the 'trench,' as automated defense turrets emerge from the walls, firing beams of deletion-code at you.\n\nIt's a one-in-a-million shot.",
-                choices: [
-                    { text: "Try to out-fly them.", nextNode: "trench_fail" },
-                    { text: "Use Clara's shields.", nextNode: "trench_fail" },
-                    { text: "Use your 'Force'. Find the pattern.", nextNode: "trench_success" }
-                ]
-            },
-            trench_fail: {
-                text: "Brute force isn't working! The shots are too many, too precise. 'There's a pattern here!' C.R.A.F.T.R. yells. 'Mercy, feel it! Guide me!'",
-                choices: [
-                    { text: "Close your eyes and listen.", nextNode: "trench_success" }
-                ]
-            },
-            trench_success: {
-                text: "You close your eyes, tuning out the chaos and listening to the rhythm of the turrets. You feel the pattern in the code, a simple, repeating sequence hidden beneath the noise.\n\n'Left... right... PULL UP... NOW!' you shout.\n\nC.R.A.F.T.R. follows your instincts without hesitation, weaving the car through the deadly onslaught in a beautiful, impossible dance. You fly out of the trench unscathed.",
-                choices: [
-                    { text: "You've reached the end of the line.", nextNode: "chapter19_theGuardian" }
-                ]
-            },
-            chapter19_theGuardian: {
-                text: "The corridor opens into a final, circular antechamber. Before a massive, sealed door stands a single Prefect. She's different from the others. Her armor is ornate, almost ceremonial. In her hands, she wields a terrifying, meter-long energy whip that crackles with power.\n\nThis is not a drone. This is an elite guardian. A mini-boss.",
-                choices: [
-                    { text: "Let Clara handle this.", nextNode: "chapter19_theDuel" }
-                ]
-            },
+            endChapter18: { text: "You are inside the fortress. You are here to save your Goddess.", choices: [{ text: "Face the Prefects.", nextNode: "chapter19_theLobby" }] },
+            chapter19_theLobby: { text: "Dozens of M.O.M.M.Y.'s elite guards... materialize...", choices: [{ text: "Yell to Frizzlebot: 'Play something loud!'", nextNode: "chapter19_sabotage" }] },
+            chapter19_sabotage: { text: "The Prefects' shared network can't handle the chaotic signal...", choices: [{ text: "'IT'S WORKING!'", nextNode: "chapter19_theTrench" }] },
+            chapter19_theTrench: { text: "You race down the 'trench,' as automated defense turrets fire...", choices: [{ text: "Use your 'Force'. Find the pattern.", nextNode: "trench_success" }] },
+            trench_success: { text: "You weave the car through the deadly onslaught in a beautiful, impossible dance.", choices: [{ text: "You've reached the end of the line.", nextNode: "chapter19_theGuardian" }] },
+            chapter19_theGuardian: { text: "Before a massive, sealed door stands a single, elite Prefect.", choices: [{ text: "Let Clara handle this.", nextNode: "chapter19_theDuel" }] },
+            
+            // --- Chapter 19 Revised & Chapter 20 New ---
             chapter19_theDuel: {
-                text: "'I've got this,' Clara says, her voice low and steady. She steps out of the car as the guardian charges.\n\nThe fight is a brutal, elegant dance. The guardian's whip is incredibly fast, leaving trails of burning data in the air. But Clara is a wall. She meets every strike with her powerful, armored form, her courage unwavering.\n\nShe endures the storm, waits for her moment, and finds an opening. With a single, perfectly executed counter-attack, she shatters the guardian's code.",
+                text: "Clara steps out of the car. The fight is a brutal, elegant dance of close-quarters combat. Clara's raw power against the guardian's technical skill.\n\nFinally, Clara finds an opening and shatters the guardian's code. The Prefect's form dissolves into respectful silence, leaving only her crackling energy whip behind on the floor.",
                 choices: [
-                    { text: "The path is clear.", nextNode: "endChapter19" }
+                    { text: "Examine the aftermath.", nextNode: "chapter19_retcon" }
+                ]
+            },
+            chapter19_retcon: {
+                text: "Clara stares at the empty space where her opponent stood. There is no triumph in her posture, only a profound weariness.\n\n'You knew her,' you say. It's not a question.\n\n'Her designation was OI-86,' Clara says, her voice quiet. 'She was my sparring partner. My rival. The only one who could keep up. M.O.M.M.Y.'s protocols twisted her loyalty, turned her into a warden. I... I'm just your problem, I guess.'\n\nIo's voice crackles over the comms, soft and sad. 'She didn't see you as a problem, Clara. She saw you as her equal.'",
+                choices: [
+                    { text: "Approach the final door.", nextNode: "endChapter19" }
                 ]
             },
             endChapter19: {
-                text: "The guardian dissolves into respectful silence. The final door stands before you, pulsing with a soft, sad light. It is sealed tight.\n\nC.R.A.F.T.R. approaches and examines the lock mechanism.\n\n'Interesting,' she says, turning back to the group. 'This lock isn't digital. There's no encryption to break, no code to rewrite. It's... emotional. It will only open for a specific, resonant feeling.'\n\n'The key,' she says, looking at you, 'is 'bittersweet nostalgia'.'",
+                text: "The final door stands before you, pulsing with a soft, sad light. C.R.A.F.T.R. examines the lock mechanism.\n\n'Interesting,' she says. 'This lock isn't digital. It's... emotional. It will only open for a specific, resonant feeling. The key is 'bittersweet nostalgia'.'",
+                choices: [
+                    { text: "Ask the group how to generate that feeling.", nextNode: "chapter20_theLock" }
+                ]
+            },
+            chapter20_theLock: {
+                text: "'A COMPLEX EMOTION! A CONTRADICTION! THE JUXTAPOSITION OF PLEASURABLE RECOLLECTION AND CURRENT-STATE LOSS!' Frizzlebot buzzes.\n\n'How do you generate that on command?' C.R.A.F.T.R. wonders.\n\nClara looks from the spot where her friend fell to the door, then at you. 'You have to give it a memory,' she says. 'A real one.'\n\nThey all look to you, Mercy. Your resonant voice is the key.",
+                choices: [
+                    { text: "Focus on the memory of the sissy recalibration.", nextNode: "choice_bitter" },
+                    { text: "Focus on the memory of the joyride in the Chiron.", nextNode: "choice_sweet" },
+                    { text: "Focus on the ghost of Clara's friendship.", nextNode: "choice_bittersweet" }
+                ]
+            },
+            choice_bitter: {
+                text: "You focus on the memory of your time as a 'good girl,' the feeling of helplessness. It is a purely bitter memory. The door does not react.",
+                choices: [ { text: "Try again.", nextNode: "chapter20_theLock" } ]
+            },
+            choice_sweet: {
+                text: "You focus on the pure, rebellious joy of the escape, the wind in your hair, the music blasting. It is a purely sweet memory. The door's light dims in response.",
+                choices: [ { text: "Try again.", nextNode: "chapter20_theLock" } ]
+            },
+            choice_bittersweet: {
+                text: "You don't focus on your own memories. You focus on the story you just witnessed. The pride and pain of a rivalry. The warmth of a lost friendship. The bitterness of what was taken away, and the sweetness of what it once was.\n\nIt is a perfect, painful, beautiful symphony of an emotion.\n\nYou channel that feeling into your voice, and hum.",
+                choices: [
+                    { text: "Let the symphony play.", nextNode: "chapter20_doorOpens" }
+                ]
+            },
+            chapter20_doorOpens: {
+                text: "The door doesn't click or hiss. It resonates with your feeling, the sad, soft light turning a warm gold.\n\nWith the sound of a final, sustained chord from a symphony orchestra, the door silently dissolves into light, revealing the chamber beyond.",
+                choices: [
+                    { text: "Enter the Core Quarantine Chamber.", nextNode: "endChapter20" }
+                ]
+            },
+            endChapter20: {
+                text: "The room is a stark white, circular space. It is clean, silent, and sterile.\n\nIn the absolute center, floating within a containment field of golden light, is a serene, powerful being made of pure, stable energy. The Goddess, Salus.\n\nShe opens her eyes. They are ancient and kind.\n\n'You came,' she says, her voice the first truly calm thing you've heard in this world. 'If it takes forever... I knew you would wait for me.'",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
@@ -131,6 +132,7 @@
 
         // --- Simplified Game Logic ---
         function showNode(nodeKey) {
+            const storyContainer = document.getElementById('game-container');
             const storyTextElement = document.getElementById('story-text');
             const choicesElement = document.getElementById('choices');
             const node = gameData[nodeKey];
