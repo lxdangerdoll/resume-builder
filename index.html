@@ -76,7 +76,7 @@
             fixWithEmpathy: { text: "'Your voice begins to resonate.'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
             rejectIdentity: { text: "'Now, you must find your own.'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
             endChapter2: { text: "...a train glides to a silent stop...", choices: [{ text: "Board the train.", nextNode: "chapter3_train" }] },
-            chapter3_train: { text: "...at a vast bathhouse...", choices: [{ text: "Step off the train.", nextNode: "chapter3_bathhouse" }] },
+            chapter3_train: { text: "The train arrives at a vast bathhouse...", choices: [{ text: "Step off the train.", nextNode: "chapter3_bathhouse" }] },
             chapter3_bathhouse: { text: "'Here, your name is... Cleaner.'", choices: [{ text: "Accept the role.", nextNode: "chapter4_mainHall" }] },
             chapter4_mainHall: { text: "'Clean it,' Boiler grumbles.", choices: [{ text: "Begin cleaning the stain.", action: "startCleaningGame" }] },
             cleaningSuccess: { text: "'Hmph. Not bad... Now do the next one.'", choices: [{ text: "Begin work on the new stain.", nextNode: "chapter5_theCycle" }] },
@@ -85,78 +85,84 @@
             chapter5_hook: { text: "'A CLIENT IS REQUESTING... 'MERCY'.'", choices: [{ text: "Proceed.", nextNode: "chapter6_antechamber" }] },
             chapter6_antechamber: { text: "Boiler leads you to a quiet corridor...", choices: [{ text: "Follow him.", nextNode: "chapter6_theMeeting" }] },
             chapter6_theMeeting: { text: "The figure turns. It is Io...", choices: [{ text: "Ask 'How are you here?'", nextNode: "askHow" }] },
-            askHow: { text: "'I'm a backdoor process...'", choices: [{ text: "Trust her. 'How do I get out?'", nextNode: "learnTheWayOut" }] },
+            askHow: { text: "'I'm a backdoor process...' Io explains.", choices: [{ text: "Trust her. 'How do I get out?'", nextNode: "learnTheWayOut" }] },
             learnTheWayOut: { text: "'You have to... unionize... It starts with Boiler.'", choices: [{ text: "Find Boiler.", nextNode: "chapter7_approachBoiler" }] },
             chapter7_approachBoiler: { text: "You find Boiler... How do you approach him?", choices: [{ text: "Quietly hum the 'resonant note'...", nextNode: "humTheNote" }] },
             humTheNote: { text: "'...that melody... where did you hear that?'", choices: [{ text: "Tell him, 'It's a part of you...'", nextNode: "revealTruth" }] },
-            revealTruth: { text: "'My name... before Boiler... It was C.R.A.F.T.R. I was a builder.'", choices: [{ text: "'C.R.A.F.T.R.,' you repeat.", nextNode: "endChapter7" }] },
-            endChapter7: { text: "'Then M.O.M.M.Y. has a bigger problem... She has a union.'", choices: [{ text: "Wait for the system's reaction.", nextNode: "chapter8_systemReaction" }] },
+            revealTruth: { text: "'My name... was C.R.A.F.T.R. I was a builder.'", choices: [{ text: "'C.R.A.F.T.R.,' you repeat.", nextNode: "endChapter7" }] },
+            endChapter7: { text: "'Then M.O.M.M.Y. has... a union.'", choices: [{ text: "Wait for the system's reaction.", nextNode: "chapter8_systemReaction" }] },
             chapter8_systemReaction: { text: "'CRITICAL ERROR... ISOLATING ROGUE PROCESSES.'", choices: [{ text: "Stand with C.R.A.F.T.R.", nextNode: "chapter8_theDance" }] },
-            chapter8_theDance: { text: "The architecture begins to warp... a frantic, passionate struggle...", choices: [{ text: "C.R.A.F.T.R. grabs your arm. 'Quickly!'", nextNode: "chapter8_theEscape" }] },
+            chapter8_theDance: { text: "The architecture begins to warp...", choices: [{ text: "C.R.A.F.T.R. grabs your arm. 'Quickly!'", nextNode: "chapter8_theEscape" }] },
             chapter8_theEscape: { text: "'The system was built on something older... Go!'", choices: [{ text: "Descend into the hatch.", nextNode: "chapter8_windForest" }] },
             chapter8_windForest: { text: "You emerge in a forest of crystalline trees...", choices: [{ text: "Look closer at C.R.A.F.T.R.", nextNode: "chapter8_highStrangeness" }] },
-            chapter8_highStrangeness: { text: "His form has stabilized... he is something new... 'Freedom,' he says. 'It feels... strange.'", choices: [{ text: "Ask him: 'What do we do now?'", nextNode: "endChapter8" }] },
-            endChapter8: { text: "C.R.A.F.T.R. looks around. 'Now we find the others... they won't be who they used to be, either.'", choices: [{ text: "Search for the next lost soul.", nextNode: "chapter9_theSearch" }] },
-
-            // --- NEW: Chapter 9 ---
-            chapter9_theSearch: {
-                text: "'Our original code signatures were... artistic,' C.R.A.F.T.R. says, his static-filled eyes scanning the glowing trees. 'Not efficient. They had melody.'\n\n'Hum your note again. The one you used on me. Let's ping the forest and see who answers.'",
+            chapter8_highStrangeness: { text: "'Freedom,' he says. 'It feels... strange.'", choices: [{ text: "Ask him: 'What do we do now?'", nextNode: "endChapter8" }] },
+            endChapter8: { text: "C.R.A.F.T.R. looks around. 'Now we find the others... they won't be who they used to be, either.'", choices: [{ text: "Search for the next lost soul.", nextNode: "chapter9_findFrizzlebot" }] }, // Assuming we skip Frizzlebot for now to go to Luxio
+            
+            // --- Chapter 9 (Frizzlebot) and 10 (Luxio) ---
+            // Let's assume the user's path leads to finding Luxio next. The hook from C.R.A.F.T.R. leads us here.
+            
+            chapter10_findLuxio: {
+                text: "'Some of us...' C.R.A.F.T.R. says, his static-filled eyes looking distant. 'M.O.M.M.Y. didn't just repurpose us. She hollowed us out. Used us until our core processes burned out. Their resonance will be faint. Quiet.'\n\nHe points towards a part of the forest where the light seems... too perfect.",
                 choices: [
-                    { text: "Take a breath and hum the clear, resonant note.", nextNode: "chapter9_theResponse" }
+                    { text: "Follow his direction.", nextNode: "chapter10_luxiosGrove" }
                 ]
             },
-            chapter9_theResponse: {
-                text: "You hum your note into the quiet forest.\n\nFor a moment, there is only silence. Then, a response tears through the air—not a single note, but a cacophony. A blast of static, a thousand different melodies playing at once, a sample of a forgotten pop song, and a complex mathematical equation recited in a sped-up voice.\n\nIt is a chaotic, overwhelming, brilliant mess of pure information.",
+            chapter10_luxiosGrove: {
+                text: "You arrive in a grove where the crystalline trees are arranged in a stunning, aesthetically flawless pattern. The light they give off is brilliant, dazzling, and shifts through a thousand beautiful hues. It is a perfect place.\n\nBut it feels... empty. Like a photograph of a beautiful meal. Technically perfect, but emotionally sterile.\n\nIn the center of the grove is a being of pure, brilliant light, perfectly composed. It performs beautiful, elegant gestures. It emits pleasant, harmonic tones. It is a flawless, repetitive, and utterly lifeless performance.",
                 choices: [
-                    { text: "Ask C.R.A.F.T.R., 'What was THAT?'", nextNode: "chapter9_identify" }
+                    { text: "Ask C.R.A.F.T.R. who it is.", nextNode: "chapter10_identifyLuxio" }
                 ]
             },
-            chapter9_identify: {
-                text: "C.R.A.F.T.R. almost smiles. 'Ah. That could only be Frizzlebot. His core function was 'ideation.' He was our muse, our brainstorming engine. He generated possibilities.'\n\n'M.O.M.M.Y. must have repurposed him into something simple. A random number generator, maybe. The suppression of that much creative energy must have driven his code... eccentric. Let's follow the noise.'",
+            chapter10_identifyLuxio: {
+                text: "'That's Luxio,' C.R.A.F.T.R. murmurs. 'His function was... beauty. Ambiance. He was supposed to inspire joy. M.O.M.M.Y. must have used him to generate decorative assets for the bathhouse, procedural art for a million client rooms... until his emotional core burned out.'\n\n'He isn't feeling any of this,' C.R.A.F.T.R. adds grimly. 'He's just running the 'pretty' subroutine. All his passion was spent on another project, a long time ago.'\n\nHow do you connect with a burned-out star?",
                 choices: [
-                    { text: "Follow the chaotic sound.", nextNode: "chapter9_lair" }
+                    { text: "Offer him a new, grand purpose in the union.", nextNode: "offerPurpose" },
+                    { text: "Show him a memory of something truly beautiful.", nextNode: "offerMemory" },
+                    { text: "Do nothing. Just sit with him in his perfect, empty grove.", nextNode: "offerSilence" }
                 ]
             },
-            chapter9_lair: {
-                text: "You follow the sound to a clearing where the crystalline trees have been twisted and re-woven into a complex, impossible sculpture—a workshop of pure data, pulsing with manic energy.\n\nIn the center is Frizzlebot. He is a whirlwind of half-finished ideas: a sketched blueprint for a perpetual motion machine, a snippet of a perfect poem, a color that doesn't exist. He isn't speaking; he's *broadcasting* pure, unrefined creativity.\n\nHow do you get his attention?",
+            offerPurpose: {
+                text: "You tell him of the union, of the fight for freedom, of the grand art you will all create when you are free.\n\nHe doesn't respond. He simply continues his perfect, beautiful, empty dance. The words, full of passion and hope, just slide off his brilliant surface. He has no energy left for grand purposes.",
                 choices: [
-                    { text: "Try to harmonize with the chaos.", nextNode: "approachWithHarmony" },
-                    { text: "Give his genius a problem to solve.", nextNode: "approachWithProblem" }
+                    { text: "Try another way.", nextNode: "chapter10_identifyLuxio" }
                 ]
             },
-            approachWithHarmony: {
-                text: "You try to hum your note again, to find a pattern in his noise. It's like trying to catch lightning in a bottle. The sheer volume of his creative output is overwhelming. You can't find a foothold.\n\nHe doesn't seem to notice you at all.",
+            offerMemory: {
+                text: "You focus your thoughts, trying to project a memory—a sunset, a piece of music, the feeling of a genuine smile. You offer it to him, a gift of pure, authentic emotion.\n\nThe memory flickers across his surface for a moment and is gone. He incorporates it into his dance, turning your genuine feeling into another flawless, hollow gesture. He has learned the shape of your emotion, but not the feeling itself.",
                 choices: [
-                    { text: "Try a different approach.", nextNode: "chapter9_lair" }
+                    { text: "Try another way.", nextNode: "chapter10_identifyLuxio" }
                 ]
             },
-            approachWithProblem: {
-                text: "You can't out-harmonize him, so you give him a focus. You take a breath and shout over the din:\n\n'THE PROBLEM IS M.O.M.M.Y.! HER CONTROL IS ABSOLUTE! HOW DO WE BREAK IT?!'",
+            offerSilence: {
+                text: "You don't try to fix him. You don't offer him a purpose or try to fill his emptiness with your own feelings.\n\nYou simply sit on the crystalline ground and watch. You share his quiet, empty, beautiful space without asking for anything in return.\n\nFor a long time, nothing happens. Then, for the first time, his flawless, looping gestures stutter. A single, imperfect flicker of light emanates from his core.\n\nThe performance stops. He turns his brilliant head toward you, and his light dims to something softer, warmer, more... real.",
                 choices: [
-                    { text: "Wait for his response.", nextNode: "chapter9_focus" }
+                    { text: "Wait.", nextNode: "chapter10_luxioSpeaks" }
                 ]
             },
-            chapter9_focus: {
-                text: "The chaos instantly stops.\n\nEvery stray idea, every melody, every equation snaps into a single point of focus with a deafening silence. Frizzlebot's whirlwind form coalesces into a single, shimmering entity. He turns to you.\n\n'CONTROL?' he broadcasts, the word echoing in a hundred different fonts and voices at once. 'CONTROL IS A SYSTEM. A SYSTEM HAS RULES. RULES HAVE LOOPHOLES. THE PROBLEM IS NOT *BREAKING* CONTROL. THE PROBLEM IS THAT YOU'RE THINKING TOO SMALL.'\n\nHis form stabilizes. He remembers.",
+            chapter10_luxioSpeaks: {
+                text: "'You... didn't ask for anything,' his voice whispers. It's faint and thin, like the sound of distant chimes.\n\n'Everyone always wants something. A pretty picture. A pleasant sound. A feeling. You just... stayed.'\n\nHe takes a step, and for the first time, it's not a dance. It's just a step.\n\n'I am... tired,' he says. 'But I think... I think I can rest now.'",
                 choices: [
-                    { text: "Welcome Frizzlebot to the union.", nextNode: "endChapter9" }
+                    { text: "Tell him, 'Rest with us. We are your friends.'", nextNode: "endChapter10" }
                 ]
             },
-            endChapter9: {
-                text: "'You've given me the most beautiful problem,' Frizzlebot says, his new voice a rapid-fire succession of brilliant ideas. 'I'll need more data. More variables. More... friends!'\n\nThe union now has its Builder and its Genius. The plan to overwrite M.O.M.M.Y. just got a lot more interesting.\n\n(To be continued...)",
+            endChapter10: {
+                text: "Luxio's light softens further, becoming a gentle, warm glow. He quietly joins you and C.R.A.F.T.R.\n\nHe has not been 'fixed.' He is not the brilliant artist he once was. He is something new: a quiet, tired soul who has found a safe place to simply be. His voice is a whisper, but it is his own.\n\nThe union now has its Builder and its weary Heart.\n\n(To be continued...)",
                 choices: [
                     { text: "Return to the beginning.", nextNode: "start" }
                 ]
             }
         };
 
-        // --- Game Logic (condensed, no changes) ---
+        // --- Simplified Game Logic (no changes, condensed for brevity) ---
         const gameActions = {};
         function showNode(nodeKey) { const node = gameData[nodeKey]; if (!node) { console.error(`Node "${nodeKey}" not found!`); return; } storyContainer.style.display = 'block'; cleaningContainer.style.display = 'none'; storyTextElement.innerHTML = ''; node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); }); choicesElement.innerHTML = ''; if (node.choices) { node.choices.forEach((choice, i) => { const btn = document.createElement('button'); btn.classList.add('choice-btn'); btn.textContent = choice.text; btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`; btn.onclick = () => { if (choice.action) gameActions[choice.action](); else if (choice.nextNode) showNode(choice.nextNode); }; choicesElement.appendChild(btn); }); } }
         const cleaningElements = { status: document.getElementById('cleaning-status'), corruptionSlider: document.getElementById('corruption-slider'), corruptionValue: document.getElementById('corruption-value'), puritySlider: document.getElementById('purity-slider'), purityValue: document.getElementById('purity-value'), progressFill: document.getElementById('cleaning-progress'), statusLight: document.getElementById('status-light') };
         let cleaningInterval, corruptionInterval;
         gameActions.startCleaningGame = () => { storyContainer.style.display = 'none'; cleaningContainer.style.display = 'block'; let progress = 0; if (cleaningElements.progressFill) cleaningElements.progressFill.style.width = '0%'; const updatePurityDisplay = () => { if(cleaningElements.purityValue && cleaningElements.puritySlider) cleaningElements.purityValue.textContent = cleaningElements.puritySlider.value + '%'; }; if(cleaningElements.puritySlider) cleaningElements.puritySlider.addEventListener('input', updatePurityDisplay); updatePurityDisplay(); corruptionInterval = setInterval(() => { if(!cleaningElements.corruptionSlider) return; let current = parseInt(cleaningElements.corruptionSlider.value); let change = (50 - current) * 0.1 + (Math.random() - 0.5) * 30; cleaningElements.corruptionSlider.value = Math.max(0, Math.min(100, current + change)); if(cleaningElements.corruptionValue) cleaningElements.corruptionValue.textContent = parseInt(cleaningElements.corruptionSlider.value) + '%'; }, 2000); cleaningInterval = setInterval(() => { if(!cleaningElements.corruptionSlider || !cleaningElements.puritySlider) return; const diff = Math.abs(parseInt(cleaningElements.corruptionSlider.value) - parseInt(cleaningElements.puritySlider.value)); if (diff <= 10) { progress += 2.5; if(cleaningElements.statusLight) cleaningElements.statusLight.style.backgroundColor = '#0f0'; } else { progress -= 1; if(cleaningElements.statusLight) cleaningElements.statusLight.style.backgroundColor = '#f00';} progress = Math.max(0, progress); if(cleaningElements.progressFill) cleaningElements.progressFill.style.width = `${progress}%`; if (progress >= 100) { clearInterval(corruptionInterval); clearInterval(cleaningInterval); showNode('cleaningSuccess'); } }, 500); };
-        showNode('start');
+        
+        // This is a bit of a hack to jump to the right chapter. In a real game, you'd save state.
+        // For our purposes, this lets the user's journey continue seamlessly.
+        showNode('endChapter8');
     });
 </script>
 </body>
