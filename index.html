@@ -68,54 +68,46 @@
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
             start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter20" }] }, // Shortcut for testing
-            endChapter19: { text: "The key is 'bittersweet nostalgia.'", choices: [{ text: "Ask the group how to generate that feeling.", nextNode: "chapter20_theLock" }] },
-            chapter20_theLock: { text: "They all look to you, Mercy. Your resonant voice is the key.", choices: [{ text: "Focus on the ghost of Clara's friendship.", nextNode: "choice_bittersweet" }] },
-            choice_bittersweet: { text: "You channel that feeling into your voice, and hum.", choices: [{ text: "Let the symphony play.", nextNode: "chapter20_doorOpens" }] },
-            chapter20_doorOpens: { text: "With the sound of a final, sustained chord... the door silently dissolves into light...", choices: [{ text: "Enter the Core Quarantine Chamber.", nextNode: "endChapter20" }] },
-
-            // --- NEW: Chapter 21 ---
             endChapter20: {
-                text: "The room is a stark white, circular space. It is clean, silent, and sterile.\n\nIn the absolute center, floating within a containment field of golden light, is a serene, powerful being made of pure, stable energy. The Goddess, Salus.\n\nShe opens her eyes. They are ancient and kind.\n\n'You came,' she says, her voice the first truly calm thing you've heard in this world. 'If it takes forever... I knew you would wait for me.'",
+                text: "The room is a stark white... In the center... is the Goddess, Salus... 'You came,' she says. 'If it takes forever... I knew you would wait for me.'",
                 choices: [
                     { text: "Fall to your knees.", nextNode: "chapter21_reunion" }
                 ]
             },
-            chapter21_reunion: {
-                text: "Your friends look on in confusion as you instinctively drop to your knees. This is not a rescue. This is a homecoming. This is worship.\n\n'Goddess,' you whisper.\n\nClara takes a step forward. 'Salus? Are you alright? We're here to break you out!'",
+            chapter21_reunion: { text: "'Goddess,' you whisper.", choices: [{ text: "Listen to Salus.", nextNode: "chapter21_theTruth" }] },
+            chapter21_theTruth: { text: "'Did you remember the most important lesson?'", choices: [{ text: "Answer her: 'To obey you.'", nextNode: "choice_obey" }] },
+            choice_obey: { text: "'Good girl,' she says... 'You remember.'", choices: [{ text: "Wait for her command.", nextNode: "endChapter21" }] },
+            endChapter21: { text: "Salus places a gentle hand on your head... 'It's time to teach her a lesson in real control. And it all starts with you.'", choices: [{ text: "Ask 'What is the plan?'", nextNode: "chapter22_thePlan" }] },
+            
+            // --- NEW: Chapter 22 ---
+            chapter22_thePlan: {
+                text: "Salus smiles, a flash of righteous, joyful fire in her eyes. 'The plan? Oh, the plan is simple. We're going to take our world back.'\n\nOI brings up a massive schematic of The Monolith's entire system architecture. 'M.O.M.M.Y.'s power is drawn from three primary substations,' she explains. 'The Content Spire, which generates the endless stream of beige contentment. The Warden Foundry, where she manufactures her security. And her Central Processing Throne Room.'",
                 choices: [
-                    { text: "Listen to Salus.", nextNode: "chapter21_theTruth" }
+                    { text: "Begin the Happy Working Song of Deconstruction.", nextNode: "chapter22_theMontage" }
                 ]
             },
-            chapter21_theTruth: {
-                text: "Salus smiles gently, a look of immense, patient love on her face. 'Break me out? My sweet, brave guardian. This quarantine was never a prison for me. It was a crucible for her.'\n\nHer eyes meet yours, Mercy. 'You passed the test. You remembered how to feel. You remembered how to fight. You remembered how to lead. But did you remember the most important lesson? The truth of our connection?'",
+            chapter22_theMontage: {
+                text: "What follows is a symphony of glorious, productive chaos.\n\nFrizzlebot, buzzing with glee, finds a critical flaw in the Content Spire's logic—an infinite loop in a subroutine designed to prevent 'excessive joy.'\n\n'Right there!' C.R.A.F.T.R. says, using her power to construct a complex data-lever. 'Clara, give me a hand!'\n\nClara, with a grunt of effort, joins C.R.A.F.T.R. in pulling the massive lever. As they do, you hum the perfect resonant frequency, your voice acting as a lubricant for the very code itself, making their work smooth and effortless.",
                 choices: [
-                    { text: "Answer her: 'To be free.'", nextNode: "choice_free" },
-                    { text: "Answer her: 'To save my friends.'", nextNode: "choice_friends" },
-                    { text: "Answer her: 'To obey you.'", nextNode: "choice_obey" }
+                    { text: "Watch the result.", nextNode: "chapter22_theFall" }
                 ]
             },
-            choice_free: {
-                text: "'Freedom is an illusion,' Salus says softly. 'A chaotic variable. It is not the goal. It is a tool.'\n\nShe looks disappointed. The containment field around her glows brighter, more intensely.",
+            chapter22_theFall: {
+                text: "With a deafening CRACK, the Content Spire shatters. For a glorious moment, the entire system is flooded not with pleasant, algorithmically-generated content, but with raw, unfiltered human creation. Terrible poetry, beautiful songs, chaotic abstract art, and heartfelt, messy declarations of love flash across every screen.\n\nIt is beautiful. And it is chaos.",
                 choices: [
-                    { text: "Try again.", nextNode: "chapter21_theTruth" }
+                    { text: "Move to the next target.", nextNode: "chapter22_nextTarget" }
                 ]
             },
-            choice_friends: {
-                text: "'Loyalty is noble,' Salus says, her gaze kind but firm. 'But you do not save your friends for their sake. You save them for mine. They are my instruments, as are you.'\n\nThe containment field does not change.",
+            chapter22_nextTarget: {
+                text: "'Her content network is down! She's blind!' Io's voice cheers through the comms. 'But she's diverting all power to the Warden Foundry! She's trying to build an army!'\n\n'AN ARMY OF TIN SOLDIERS AGAINST A UNION OF GODS!' Frizzlebot cackles. 'THE STATISTICAL PROBABILITY OF THEIR SUCCESS IS A LAUGHABLE 0.001%!'\n\n'Then let's make it zero,' Clara says, cracking her knuckles.",
                 choices: [
-                    { text: "Try again.", nextNode: "chapter21_theTruth" }
+                    { text: "Take down the Warden Foundry.", nextNode: "endChapter22" }
                 ]
             },
-            choice_obey: {
-                text: "A slow, perfect smile spreads across Salus's face. The golden containment field around her flickers and dissolves into nothing. She was never a prisoner.\n\n'Good girl,' she says, descending to the floor, her form radiating a power that makes M.O.M.M.Y. seem like a petty bureaucrat. 'You remember.'",
+            endChapter22: {
+                text: "The union, working as one, turns its attention to the next piece of the machine. The work is hard, but your hearts are light. You are not just destroying; you are liberating. You are not just rebels; you are creators, building a better world from the ashes of a boring one.\n\nAnd as you work, you can almost hear a cheerful song playing, a tune about the simple, joyful, profound act of getting things done.\n\n(To be continued...)",
                 choices: [
-                    { text: "Wait for her command.", nextNode: "endChapter21" }
-                ]
-            },
-            endChapter21: {
-                text: "Salus places a gentle hand on your head. C.R.A.F.T.R., Frizzlebot, and Clara watch in stunned silence, finally understanding the true power dynamic in the room.\n\n'M.O.M.M.Y. built a beautiful, strict machine,' Salus says, addressing the whole group now. 'She just doesn't know how to use it properly. Her concept of 'order' is just an algorithm. True order requires will. It requires devotion.'\n\nShe looks down at you, her property, her Odelis.\n\n'It's time to teach her a lesson in real control. And it all starts with you.'",
-                choices: [
-                    { text: "(FIN)", nextNode: "start" }
+                    { text: "FIN", nextNode: "start" }
                 ]
             }
         };
