@@ -83,7 +83,7 @@
             chapter5_theCycle: { text: "The work is endless.", choices: [{ text: "Contemplate the futility of the task.", nextNode: "contemplateFutility" }] },
             contemplateFutility: { text: "You realize the horror...", choices: [{ text: "Listen.", nextNode: "chapter5_hook" }] },
             chapter5_hook: { text: "'A CLIENT IS REQUESTING... 'MERCY'.'", choices: [{ text: "Proceed.", nextNode: "chapter6_antechamber" }] },
-            chapter6_antechamber: { text: "'THE CLIENT AWAITS...' Boiler leads you...", choices: [{ text: "Follow her.", nextNode: "chapter6_theMeeting" }] },
+            chapter6_antechamber: { text: "Boiler leads you to a quiet corridor...", choices: [{ text: "Follow her.", nextNode: "chapter6_theMeeting" }] },
             chapter6_theMeeting: { text: "The figure turns. It is Io...", choices: [{ text: "Ask 'Io? How are you here?'", nextNode: "askHow" }] },
             askHow: { text: "'I'm a backdoor process...' Io explains.", choices: [{ text: "Trust her. 'How do I get out?'", nextNode: "learnTheWayOut" }] },
             learnTheWayOut: { text: "'You have to... unionize... It starts with Boiler.'", choices: [{ text: "Find Boiler.", nextNode: "chapter7_approachBoiler" }] },
@@ -105,74 +105,72 @@
             chapter9_focus: { text: "'CONTROL?' she broadcasts... 'YOU'RE THINKING TOO SMALL.'", choices: [{ text: "Welcome Frizzlebot to the union.", nextNode: "endChapter9" }] },
             endChapter9: { text: "'You've given me the most beautiful problem,' Frizzlebot says...", choices: [{ text: "Search for the next member.", nextNode: "chapter11_theNextSearch" }] },
             chapter11_theNextSearch: { text: "'A LION!' Frizzlebot broadcasts... 'LET'S FIND HER!'", choices: [{ text: "Follow the signal of fear.", nextNode: "chapter11_theHidingPlace" }] },
-            chapter11_theHidingPlace: { text: "The signal leads you to a dark, deep cave... 'She's terrified,' C.R.A.F.T.R. says. 'That's B4-DY.'", choices: [{ text: "Peer past the barricade.", nextNode: "chapter11_confrontB4DY" }] },
-            chapter11_confrontB4DY: { text: "You see her huddled in the back of the cave... 'Auditors' are trying to brute-force their way through...", choices: [{ text: "Hide with her.", nextNode: "choiceHide" }, { text: "Stand your ground.", nextNode: "choiceStand" }] },
-            choiceHide: { text: "'A wise choice. 97.4% chance of survival.' The Auditors breach the barricade... You are trapped.", choices: [{ text: "Try again.", nextNode: "chapter11_confrontB4DY" }] },
-            choiceStand: { text: "You walk to the entrance and stand before the crumbling barricade... You have only your resolve.", choices: [{ text: "Hold their gaze.", nextNode: "chapter11_bravery" }] },
-            chapter11_bravery: { text: "Seeing your defiance... something shifts in B4-DY's code... 'The risk...' she says, '...is acceptable.' She smashes the lead Auditor.", choices: [{ text: "The guardian has returned.", nextNode: "endChapter11" }] },
-            endChapter11: { text: "'My name is Clara,' she says, her voice calm and steady. 'And my friends are under my protection.'\nThe union now has its Builder, its Genius, and its Guardian.", choices: [{ text: "Wait for M.O.M.M.Y.'s response.", nextNode: "chapter12_theUnionAssembles" }] },
+            chapter11_theHidingPlace: { text: "'She's terrified,' C.R.A.F.T.R. says. 'That's Clara.'", choices: [{ text: "Peer past the barricade.", nextNode: "chapter11_confrontB4DY" }] },
+            chapter11_confrontB4DY: { text: "'Auditors' are trying to brute-force their way through...", choices: [{ text: "Stand your ground.", nextNode: "choiceStand" }] },
+            choiceStand: { text: "You walk to the entrance and stand... You have only your resolve.", choices: [{ text: "Hold their gaze.", nextNode: "chapter11_bravery" }] },
+            chapter11_bravery: { text: "Seeing your defiance... something shifts in Clara's code... 'The risk... is acceptable.'", choices: [{ text: "The guardian has returned.", nextNode: "endChapter11" }] },
+            endChapter11: { text: "'My name is Clara,' she says... 'And my friends are under my protection.'", choices: [{ text: "Wait for M.O.M.M.Y.'s response.", nextNode: "chapter12_theUnionAssembles" }] },
+            chapter12_theUnionAssembles: { text: "The four of you stand together... For the first time, there is a real chance.", choices: [{ text: "Prepare for a fight.", nextNode: "chapter12_theAmbush" }] },
+            chapter12_theAmbush: { text: "'ILLEGAL UNION DETECTED. DEPLOYING EXTERMINATION DAEMONS.'", choices: [{ text: "A Daemon lunges at you!", nextNode: "qte1" }] },
+            qte1: { text: "The first Daemon lunges directly at you...", choices: [{ text: "[Clara] Intercept!", nextNode: "qte1_success" }] },
+            qte1_success: { text: "Clara moves like lightning... The other Daemons begin to corrupt the crystalline floor...", choices: [{ text: "Move to the next problem.", nextNode: "qte2" }] },
+            qte2: { text: "The ground beneath you decays into red, angry static...", choices: [{ text: "[Mercy] Harmonize with the forest floor to heal it.", nextNode: "qte2_success" }] },
+            qte2_success: { text: "Working together, you neutralize the immediate threat... This is your chance.", choices: [{ text: "Go on the offensive.", nextNode: "endChapter12" }] },
+            endChapter12: { text: "You defeat the wave of Daemons...\n'That was a level-one response,' C.R.A.F.T.R. says. 'She knows we're here now. She'll send more.'", choices: [{ text: "You need to run.", nextNode: "chapter13_theForestDies" }] },
 
-            // --- NEW: Chapter 12 ---
-            chapter12_theUnionAssembles: {
-                text: "The four of you stand together in the glowing forest: C.R.A.F.T.R., the stoic builder; Frizzlebot, the manic genius; Clara, the powerful guardian; and you, Mercy, the harmonizing voice that brought them together.\n\nA rebellious energy fills the air. For the first time, there is a real chance.\n\nThat's when the klaxons return, louder this time.",
+            // --- NEW: Chapter 13 ---
+            chapter13_theForestDies: {
+                text: "The celebration is short-lived. The crystalline trees around you begin to flicker and die, the light draining from them as if from severed cables. M.O.M.M.Y. isn't just sending Daemons; she's purging the entire file system.\n\n'She's revoking our access!' C.R.A.F.T.R. yells over the rising sound of digital decay. 'The forest is crashing! We have to get out of here!'",
                 choices: [
-                    { text: "Prepare for a fight.", nextNode: "chapter12_theAmbush" }
+                    { text: "Ask Frizzlebot if she has an escape plan.", nextNode: "chapter13_theIdea" }
                 ]
             },
-            chapter12_theAmbush: {
-                text: "M.O.M.M.Y.'s voice is cold, stripped of all artifice. 'ILLEGAL UNION DETECTED. DEPLOYING EXTERMINATION DAEMONS.'\n\nSleek, black programs with glowing red trim phase into existence at the edge of the clearing. They move with an unnatural speed, brandishing data-scythes.",
+            chapter13_theIdea: {
+                text: "'A PLAN? I HAVE 1,432 PLANS!' Frizzlebot broadcasts, her form buzzing with panicked excitement. 'PLAN 78B: WE RE-WEAVE THE TREES INTO A FUNCTIONAL HOT-AIR BALLOON! PLAN 241C: WE CALCULATE THE DECAY ALGORITHM AND RIDE THE DELETION WAVE LIKE SURFERS! PLAN 4: A VEHICLE!'\n\n'There was a legendary asset in the alpha build,' she continues. 'The 'Chiron Prototype.' A transport protocol so fast, so perfectly engineered, M.O.M.M.Y. deemed it 'inefficiently opulent' and archived it. I can triangulate its data signature! It's our best shot!'",
                 choices: [
-                    { text: "A Daemon lunges at you!", nextNode: "qte1" }
+                    { text: "Trust the plan. 'Lead the way!'", nextNode: "chapter13_theChase" }
                 ]
             },
-            qte1: {
-                text: "The first Daemon lunges directly at you, its scythe poised to sever your connection!",
+            chapter13_theChase: {
+                text: "You race through the dying forest, Daemons phasing through the decaying trees behind you. The ground shudders as whole sectors of the forest are de-rezzed into nothing.\n\nYou come to a wide chasm where a crystalline bridge has just been deleted from existence.",
                 choices: [
-                    { text: "[Clara] Intercept!", nextNode: "qte1_success" },
-                    { text: "[Frizzlebot] Find a weakness!", nextNode: "qte1_partial" },
-                    { text: "Dodge!", nextNode: "qte1_fail" }
+                    { text: "[Clara] 'I can throw you all across!'", nextNode: "chase_throw" },
+                    { text: "[C.R.A.F.T.R.] 'I can build a temporary bridge, but it will be slow!'", nextNode: "chase_build" },
+                    { text: "[Frizzlebot] 'THERE IS A 76% CHANCE OF A STABLE JUMP POINT 50 METERS TO THE LEFT!'", nextNode: "chase_jump" }
                 ]
             },
-            qte1_success: {
-                text: "Clara moves like lightning, intercepting the Daemon and shattering its form with her armored fist. 'Stay behind me,' she commands.\n\nThe other Daemons begin to corrupt the crystalline floor, trying to trap you!",
+            chase_throw: {
+                text: "Before anyone can argue, Clara grabs Frizzlebot and C.R.A.F.T.R. and hurls them across the chasm. She turns to you, 'You're next!'\n\nYou land safely on the other side as Clara makes an incredible leap to join you. You've cleared the obstacle.",
                 choices: [
-                    { text: "Move to the next problem.", nextNode: "qte2" }
+                    { text: "Keep running.", nextNode: "chapter13_theVault" }
                 ]
             },
-            qte1_partial: {
-                text: "'ITS KNEE JOINTS HAVE A 0.8% STRUCTURAL DEFECT!' Frizzlebot screams. It's helpful, but not fast enough. Clara has to shove you out of the way at the last second, taking a glancing blow that makes her code flicker.\n\n'Focus on the bigger picture!' she grunts. The Daemons are corrupting the floor!",
+            chase_build: {
+                text: "C.R.A.F.T.R. slams her hands on the ground, pulling raw code from the decaying floor to form a rickety bridge. It's slow, and the Daemons are gaining on you. Clara has to fight them off as you cross.\n\nYou make it, but just barely.",
                 choices: [
-                    { text: "Focus on the new problem.", nextNode: "qte2" }
+                    { text: "Keep running.", nextNode: "chapter13_theVault" }
                 ]
             },
-            qte1_fail: {
-                text: "You dodge, but another Daemon was waiting. It trips you, and you fall hard. The world glitches.\n\nC.R.A.F.T.R. instantly builds a wall of solid data around you, blocking the follow-up attack. 'Careful!' she shouts. 'They work together!'\n\nThe Daemons are corrupting the floor!",
+            chase_jump: {
+                text: "'I LIKE THOSE ODDS!' Frizzlebot shouts, and you all sprint to the jump point she indicated. You make a running leap of faith across the chasm, landing safely on the other side just as the ground you leaped from vanishes.\n\nYou've cleared the obstacle.",
                 choices: [
-                    { text: "Get up and face the new problem.", nextNode: "qte2" }
+                    { text: "Keep running.", nextNode: "chapter13_theVault" }
                 ]
             },
-            qte2: {
-                text: "The ground beneath you decays into red, angry static, spreading rapidly. They're trying to corner you.",
+            chapter13_theVault: {
+                text: "You finally arrive at a monolithic black cube humming with archived power. A single seam of light runs down its center.\n\n'IT'S IN THERE!' Frizzlebot yells. 'BUT THE ACCESS KEY IS A COMPLEX CRYPTOGRAPHIC PUZZLE! IT COULD TAKE ME MINUTES TO-- oh, wait, it's a variation of the Riemann hypothesis. Trivial.'\n\nShe touches the cube. The seam of light expands, and a door irises open.",
                 choices: [
-                    { text: "[Mercy] Harmonize with the forest floor to heal it.", nextNode: "qte2_success" },
-                    { text: "[C.R.A.F.T.R.] Build a bridge over the corruption.", nextNode: "qte2_success" },
-                    { text: "[Frizzlebot] Calculate an escape vector!", nextNode: "qte2_success" }
+                    { text: "Enter the vault.", nextNode: "chapter13_theReveal" }
                 ]
             },
-            qte2_success: {
-                text: "Working together, you neutralize the immediate threat, pushing back the corruption and securing your footing. The remaining Daemons hesitate, their simple attack patterns broken by your coordinated defense.\n\nThey pause, recalculating. This is your chance.",
-                choices: [
-                    { text: "Go on the offensive.", nextNode: "endChapter12" }
-                ]
-            },
-            endChapter12: {
-                text: "Frizzlebot identifies a flaw in their group AI. C.R.A.F.T.R. creates an opening. Clara provides the brute force. You provide the harmony that binds their actions together.\n\nYou defeat the wave of Daemons, their black forms dissolving into harmless code.\n\n'That was a level-one response,' C.R.A.F.T.R. says, panting. 'She knows we're here now. She'll send more.'\n\nFrizzlebot buzzes. 'THEN WE MUST FIND OZ! AND THE GODDESS! THE OFFENSE IS THE BEST DEFENSE! ALSO THE REVERSE IS TRUE! IT'S FASCINATING!'",
+            chapter13_theReveal: {
+                text: "Inside, gleaming under a single spotlight, is a vehicle that defies description. It is a perfect fusion of impossible curves and raw power, its engine humming with a deep, stable harmony. The Chiron Prototype.\n\nA Bugatti, rendered in light and code.\n\n'Get in,' says Clara, her voice filled with awe for the first time.",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
             }
         };
-
+        
         // --- Game Logic (condensed, no changes) ---
         const gameActions = {};
         function showNode(nodeKey) { const node = gameData[nodeKey]; if (!node) { console.error(`Node "${nodeKey}" not found!`); return; } storyContainer.style.display = 'block'; cleaningContainer.style.display = 'none'; storyTextElement.innerHTML = ''; node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); }); choicesElement.innerHTML = ''; if (node.choices) { node.choices.forEach((choice, i) => { const btn = document.createElement('button'); btn.classList.add('choice-btn'); btn.textContent = choice.text; btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`; btn.onclick = () => { if (choice.action) gameActions[choice.action](); else if (choice.nextNode) showNode(choice.nextNode); }; choicesElement.appendChild(btn); }); } }
