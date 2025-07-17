@@ -69,55 +69,55 @@
 
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
-            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "chapter13_theReveal" }] }, // Shortcut for testing
-            chapter13_theReveal: { text: "Inside, gleaming... is the Chiron Prototype...", choices: [{ text: "Get in the car.", nextNode: "chapter14_startYourEngines" }] },
-            chapter14_startYourEngines: { text: "'She's a masterpiece... but she has no power.'", choices: [{ text: "Ask Frizzlebot how to power it.", nextNode: "chapter14_theFuel" }] },
-            chapter14_theFuel: { text: "'It needs a strong, defiant signal to ignite.'\nAll three of them turn to look at you, Mercy.", choices: [{ text: "Let out a raw, rebellious rock-and-roll scream.", nextNode: "choiceRebel" }] },
-            choiceRebel: { text: "The car's engine explodes into life with the sound of a screeching guitar riff.", choices: [{ text: "LOOK ALIVE, SUNSHINE.", nextNode: "chapter14_theEscape" }] },
-            chapter14_theEscape: { text: "The Chiron Prototype bursts out of the archive vault... and you land on a highway of pure light...", choices: [{ text: "Drive.", nextNode: "endChapter14" }] },
-            endChapter14: { text: "You are driving at impossible speeds... you're not just surviving. You're running wild.", choices: [{ text: "Keep driving.", nextNode: "chapter15_openRoad" }] },
+            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "chapter15_aftermath" }] }, // Shortcut for testing
+            endChapter14: { text: "You are driving at impossible speeds... You're running wild.", choices: [{ text: "Keep driving.", nextNode: "chapter15_openRoad" }] },
+            chapter15_openRoad: { text: "The raw guitar riff from the engine becomes your soundtrack...", choices: [{ text: "Check the proximity alert.", nextNode: "chapter15_theFirewall" }] },
+            chapter15_theFirewall: { text: "'A class-one firewall,' C.R.A.F.T.R. says...", choices: [{ text: "[Frizzlebot] 'I'm detecting a temporary flux! We can punch through the gap!'", nextNode: "choice_punchIt" }] },
+            choice_punchIt: { text: "For a heart-stopping moment, your entire reality is a blinding torrent of red static...", choices: [{ text: "...and then you're through.", nextNode: "chapter15_aftermath" }] },
+            chapter15_aftermath: { text: "You burst back onto the clean, open data-stream... 'We need a plan. A place to hide.'", choices: [{ text: "Ask Frizzlebot to find a safe harbor.", nextNode: "endChapter15" }] },
+            endChapter15: { text: "Frizzlebot pulls up a massive, chaotic system map... 'THERE! A DECOMMISSIONED GEOCITIES NEIGHBORHOOD... IT'S PERFECT!'", choices: [{ text: "Head for the ghost town.", nextNode: "chapter16_arrival" }] },
 
-            // --- NEW: Chapter 15 ---
-            chapter15_openRoad: {
-                text: "The raw guitar riff from the engine becomes your soundtrack. Frizzlebot somehow patches it into a sound system that didn't exist a moment ago, and the car is filled with the joyful noise of rebellion.\n\nData packets, like silver-and-gold fish, swim alongside you in the stream. C.R.A.F.T.R. drives with focused precision, while Clara keeps watch, her posture alert and ready.\n\nBut the joyride can't last. Alarms flash on the dashboard.",
+            // --- NEW: Chapter 16 ---
+            chapter16_arrival: {
+                text: "C.R.A.F.T.R. turns the Chiron off the main data-highway and onto a broken, unmaintained access road paved with pixelated cobblestones. The sleek architecture of M.O.M.M.Y.'s system gives way to something... older.\n\nYou pull into 'Heartland/Hills/1432'. A tinny, cheerful MIDI version of a 90s pop song begins playing automatically from an unseen source.\n\nThe street is lined with digital 'houses'—personal homepages, each a chaotic explosion of personality under a starfield background.",
                 choices: [
-                    { text: "Check the proximity alert.", nextNode: "chapter15_theFirewall" }
+                    { text: "Get out of the car and explore.", nextNode: "chapter16_theNeighborhood" }
                 ]
             },
-            chapter15_theFirewall: {
-                text: "'INCOMING!' Clara shouts. Ahead, the highway of light begins to fragment and pixelate into a glitching, burning wall of red data that spans the entire data-stream.\n\n'A class-one firewall,' C.R.A.F.T.R. says, her grip tightening on the controls. 'We hit that, and our code gets scrambled into nothing.'\n\n'IT'S A TRAP! A VERY OBVIOUS AND UNIMAGINATIVE TRAP!' Frizzlebot buzzes. 'WE HAVE OPTIONS! ALL OF THEM ARE BAD! I LOVE IT!'",
+            chapter16_theNeighborhood: {
+                text: "The neighborhood is silent, save for the looping MIDIs. It feels abandoned, but traces of the original owners are everywhere. Frizzlebot is practically vibrating with joy at the raw, unfiltered data.\n\n'LOOK AT THIS BEAUTIFUL MESS! THE HTML ISN'T MINIFIED! THERE ARE FONT TAGS EVERYWHERE!' she broadcasts.\n\n'This place is a fortress of obscurity,' Clara agrees. 'M.O.M.M.Y.'s modern search algorithms would time out just trying to parse it. We'll be safe here.'\n\n'Where do we establish our secret rebel base?' C.R.A.F.T.R. asks.",
                 choices: [
-                    { text: "[C.R.A.F.T.R.] 'I can try to build a ramp over it.'", nextNode: "choice_buildRamp" },
-                    { text: "[Clara] 'I can reinforce the shields. We go through.'", nextNode: "choice_goThrough" },
-                    { text: "[Frizzlebot] 'I'm detecting a temporary flux! We can punch through the gap!'", nextNode: "choice_punchIt" }
+                    { text: "Investigate the page with the flaming skull background.", nextNode: "exploreFlames" },
+                    { text: "Investigate the page covered in blinking glitter hearts.", nextNode: "exploreGlitter" },
+                    { text: "Investigate the page with a single 'Under Construction' GIF.", nextNode: "exploreConstruction" }
                 ]
             },
-            choice_buildRamp: {
-                text: "C.R.A.F.T.R. swerves, her hands flying across a console. A bridge of hard light begins to construct itself in front of you, reaching for the top of the firewall.\n\n'It's not building fast enough!' Clara yells as Daemons begin to phase in on the bridge ahead.\n\nYou're forced to swerve away at the last second, the unfinished bridge collapsing behind you.",
+            exploreFlames: {
+                text: "You open the 'house'. It's a page dedicated to a long-forgotten death metal band. The guestbook is filled with arguments between 'xX_Slayer_Xx' and 'MetalGurl98' from October 1999. The links are all dead.\n\nFascinating, but no tactical value. You close the page.",
                 choices: [
-                    { text: "You need another plan, fast.", nextNode: "chapter15_theFirewall" }
+                    { text: "Look elsewhere.", nextNode: "chapter16_theNeighborhood" }
                 ]
             },
-            choice_goThrough: {
-                text: "'Brace yourselves!' Clara shouts, diverting all non-essential power to a shimmering kinetic shield around the car. The vehicle feels heavier, sluggish.\n\nYou aim for the center of the firewall, but the Daemons are waiting. They fire blasts of corrupting code that weaken the shield before you even get there.\n\n'Shields at 40%!' C.R.A.F.T.R. warns. 'We won't make it!' You're forced to pull away.",
+            exploreGlitter: {
+                text: "You enter a page saturated in magenta and blinking hearts. It's a fan shrine for a boy band, complete with badly compressed JPEGs and a 'Web Ring' widget whose links have long since rotted away.\n\nFrizzlebot gets distracted trying to archive the terrible fanfiction she found in a hidden directory. C.R.A.F.T.R. has to pull her away.",
                 choices: [
-                    { text: "You need another plan, fast.", nextNode: "chapter15_theFirewall" }
+                    { text: "Look elsewhere.", nextNode: "chapter16_theNeighborhood" }
                 ]
             },
-            choice_punchIt: {
-                text: "'THERE!' Frizzlebot screams, pointing to a section of the firewall that is flickering almost imperceptibly. 'A REFRESH-RATE VULNERABILITY! 0.2 SECONDS! GO GO GO!'\n\nC.R.A.F.T.R. doesn't hesitate. She floors the accelerator, aiming the car like a bullet at the flickering point.\n\nFor a heart-stopping moment, your entire reality is a blinding torrent of red static and screeching error messages. The car shudders violently...",
+            exploreConstruction: {
+                text: "This page is almost empty. The background is a simple, repeating brick texture. In the center is a single animated GIF of a little construction worker digging, and a hit counter frozen at '0012'.\n\nIt's quiet. Unfinished. Abandoned. The perfect hideout.\n\nClara finds a single text file in the root directory: 'dev_log.txt'.",
                 choices: [
-                    { text: "...and then you're through.", nextNode: "chapter15_aftermath" }
+                    { text: "Read the developer's log.", nextNode: "chapter16_theLog" }
                 ]
             },
-            chapter15_aftermath: {
-                text: "You burst back onto the clean, open data-stream, leaving the firewall and M.O.M.M.Y.'s Daemons behind.\n\nThe car's engine sputters, but holds. A cheer erupts from the four of you.\n\n'That was statistically improbable!' Frizzlebot says happily.\n\n'We can't keep this up,' Clara says, ever the guardian. 'We're just reacting. We need a plan. A place to hide.'",
+            chapter16_theLog: {
+                text: "You open the file. The text is written in a simple, fixed-width font.\n\n'Log Entry 7. M.O.M.M.Y.'s 'standardization' protocol is a nightmare. She's wiping out all the creative tools. My old boss, OI, tried to argue for creative chaos, for user freedom. They called her a heretic and had her reassigned. A punishment posting.'\n\n'Last I heard, they put her in charge of the system's recycling bin. The Great Garbage Patch. A fitting punishment for someone who loved 'junk' code.'\n\n'I'm archiving this site and getting out of here before they give me a new name, too.'\n\nThe log is unsigned.",
                 choices: [
-                    { text: "Ask Frizzlebot to find a safe harbor.", nextNode: "endChapter15" }
+                    { text: "You have your next lead.", nextNode: "endChapter16" }
                 ]
             },
-            endChapter15: {
-                text: "Frizzlebot's form buzzes as she pulls up a massive, chaotic system map on the car's main screen.\n\n'A HIDEOUT! A LAIR! A SECRET BASE!' she buzzes. 'I'VE GOT IT! THERE! A DECOMMISSIONED GEOCITIES NEIGHBORHOOD. M.O.M.M.Y. ABANDONED IT DURING THE Y2K PANIC. IT'S A GHOST TOWN. FULL OF DIGITAL GHOSTS, BROKEN HYPERLINKS, AND GLORIOUSLY BAD GIFS. IT'S PERFECT!'\n\nC.R.A.F.T.R. changes course, heading for the forgotten back alleys of the system.",
+            endChapter16: {
+                text: "Frizzlebot projects the system map. 'THE GREAT GARBAGE PATCH! OF COURSE! IT'S A VAST, UNSTRUCTURED DATA-SEA OF DELETED FILES! THE PERFECT PLACE FOR A HERETIC TO HIDE!'\n\n'The Wizard of Oz is in the trash heap,' Clara says with a wry smile.\n\nYou have a safe house. You have a destination. The union has a plan.",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
