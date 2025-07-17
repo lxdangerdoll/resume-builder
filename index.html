@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercy in Wonderland</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a1a1d;
+            --text-color: #c5c6c7;
+            --choice-bg: #4b5d67;
+            --choice-hover-bg: #6b7d87;
+            --accent-color: #66fcf1;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Lora', serif;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #game-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        #story-text {
+            margin-bottom: 40px;
+            white-space: pre-wrap; /* Preserves line breaks in the text */
+        }
+        #story-text p {
+            margin: 0 0 1em 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #choices {
+            display: grid;
+            grid-gap: 15px;
+        }
+        .choice-btn {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1em;
+            background-color: var(--choice-bg);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 15px 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        .choice-btn:hover {
+            background-color: var(--choice-hover-bg);
+        }
+        .choice-btn:focus {
+            outline: 2px solid var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="story-text"></div>
+        <div id="choices"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const storyTextElement = document.getElementById('story-text');
+            const choicesElement = document.getElementById('choices');
+
+            // The entire game's story and logic is stored in this object.
+            // To expand the game, just add more nodes here.
+            const gameData = {
+                start: {
+                    text: "You are... somewhere.\nThe air hums with a silent static, like a television tuned to a dead channel.\n\nBefore you, the space shimmers, resolving into two identical, plain, grey doors.",
+                    choices: [
+                        { text: "Approach the left door.", nextNode: "twoDoorsRoom" },
+                        { text: "Approach the right door.", nextNode: "twoDoorsRoom" }
+                    ]
+                },
+                twoDoorsRoom: {
+                    text: "It doesn't matter which door you chose. As you approach, they ripple like liquid mercury and merge into a single doorway.\nThe handle is cool to the touch. It opens without a sound.\n\nThe room beyond is vast and empty, filled with the gentle, rhythmic ticking of a million unseen clocks.\n\nA disembodied voice, smooth as velvet, whispers in your ear...\n\n'Are you the one who builds, or the one who is built?'",
+                    choices: [
+                        { text: "'I am the one who builds.'", nextNode: "builderPath" },
+                        { text: "'I am the one who is built.'", nextNode: "builtPath" },
+                        { text: "Ask, 'Who are you?'", nextNode: "whoAreYou" }
+                    ]
+                },
+                // Add new story nodes here. For example:
+                builderPath: {
+                    text: "The voice chuckles, a sound like rustling leaves.\n\n'A confident answer. But a blueprint is not the same as a foundation. Your journey is just beginning.'\n\n(To be continued...)",
+                    choices: [
+                        { text: "Begin again.", nextNode: "start" }
+                    ]
+                },
+                builtPath: {
+                    text: "The voice hums thoughtfully.\n\n'Honest. But clay does not shape itself. Your journey is just beginning.'\n\n(To be continued...)",
+                    choices: [
+                        { text: "Begin again.", nextNode: "start" }
+                    ]
+                },
+                whoAreYou: {
+                    text: "The ticking of the clocks intensifies for a moment, then subsides.\n\n'I am the question you have yet to answer,' the voice replies, before repeating its own.\n\n'Are you the one who builds, or the one who is built?'",
+                    choices: [
+                        { text: "'I build.'", nextNode: "builderPath" },
+                        { text: "'I am built.'", nextNode: "builtPath" }
+                    ]
+                }
+            };
+
+            function showNode(nodeKey) {
+                const node = gameData[nodeKey];
+                if (!node) {
+                    console.error(`Story node "${nodeKey}" not found!`);
+                    return;
+                }
+
+                // Clear previous content
+                storyTextElement.innerHTML = '';
+                choicesElement.innerHTML = '';
+
+                // Display new story text line by line
+                const textParagraphs = node.text.split('\n');
+                textParagraphs.forEach((paragraphText, index) => {
+                    const p = document.createElement('p');
+                    p.textContent = paragraphText;
+                    p.style.animationDelay = `${index * 0.3}s`;
+                    storyTextElement.appendChild(p);
+                });
+
+                // Display new choices
+                if (node.choices) {
+                    node.choices.forEach((choice, index) => {
+                        const button = document.createElement('button');
+                        button.classList.add('choice-btn');
+                        button.textContent = choice.text;
+                        button.style.animationDelay = `${textParagraphs.length * 0.3 + index * 0.2}s`;
+                        button.onclick = () => {
+                            if (choice.nextNode) {
+                                showNode(choice.nextNode);
+                            }
+                        };
+                        choicesElement.appendChild(button);
+                    });
+                }
+            }
+            
+            // Start the game
+            showNode('start');
+        });
+    </script>
+</body>
+</html>
