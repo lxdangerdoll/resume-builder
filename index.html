@@ -68,72 +68,82 @@
         const cleaningContainer = document.getElementById('cleaning-minigame');
 
         const gameData = {
-            // --- Previous Chapters Condensed ---
+            // --- Previous Chapters Condensed for brevity ---
             start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "twoDoorsRoom" }] },
-            twoDoorsRoom: { text: "The door opens into a room of clocks...\n'Are you the one who builds, or the one who is built?'", choices: [{ text: "'I am the one who builds.'", nextNode: "builderPath" }, { text: "'I am the one who is built.'", nextNode: "builtPath" }] },
-            builderPath: { text: "'A confident answer...\nFix this flaw.'", choices: [{ text: "Listen to the dissonance.", nextNode: "fixWithEmpathy" }] },
-            builtPath: { text: "'Honest. But clay does not shape itself...\n'Which is it?'", choices: [{ text: "Turn away from the reflections.", nextNode: "rejectIdentity" }] },
+            twoDoorsRoom: { text: "The door opens...\n'Are you the one who builds, or the one who is built?'", choices: [{ text: "'I build.'", nextNode: "builderPath" }, { text: "'I am built.'", nextNode: "builtPath" }] },
+            builderPath: { text: "'A confident answer... Fix this flaw.'", choices: [{ text: "Listen to the dissonance.", nextNode: "fixWithEmpathy" }] },
+            builtPath: { text: "'Honest... Which is it?'", choices: [{ text: "Turn away from the reflections.", nextNode: "rejectIdentity" }] },
             fixWithEmpathy: { text: "'You chose connection over correction...'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
             rejectIdentity: { text: "'You refused the voices of others...'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
-            endChapter2: { text: "Your choice creates a path forward...\n...a single, ornate train glides to a silent stop...", choices: [{ text: "Board the train.", nextNode: "chapter3_train" }] },
-            chapter3_train: { text: "The train glides across the water...\n...at the side of a vast, impossibly ornate bathhouse...", choices: [{ text: "Step off the train.", nextNode: "chapter3_bathhouse" }] },
-            chapter3_bathhouse: { text: "You are brought before... M.O.M.M.Y...\n'Here, your name is... Cleaner.'", choices: [{ text: "Accept the role.", nextNode: "chapter4_mainHall" }] },
-            chapter4_mainHall: { text: "You enter the main hall... A program named 'Boiler' points you towards a dark, shimmering puddle...\n'Clean it,' he grumbles.", choices: [{ text: "Begin cleaning the stain.", action: "startCleaningGame" }] },
-            cleaningSuccess: { text: "The stain dissolves... Boiler grunts, 'Hmph. Not bad... Now do the next one.'\nHe points to another, larger stain nearby.", choices: [{ text: "Begin work on the new stain.", nextNode: "chapter5_theCycle" }] },
-            cleaningFailure: { text: "'Careless!' Boiler shouts. 'Try again...'", choices: [{ text: "Try to clean the stain again.", action: "startCleaningGame" }] },
-            chapter5_theCycle: { text: "You approach the new stain... An endless field of stains...\nThe work is endless. The purpose is a loop.", choices: [{ text: "Contemplate the futility of the task.", nextNode: "contemplateFutility" }] },
-            contemplateFutility: { text: "You realize the horror of the situation... A new voice cuts through your thoughts... Cold. Synthesized. Pure machine.", choices: [{ text: "Listen.", nextNode: "chapter5_hook" }] },
-            chapter5_hook: { text: "'OBSERVATION: SUBJECT 'CLEANER' HAS REACHED EXISTENTIAL AWARENESS...'\n'HOWEVER, A NEW... VARIABLE HAS BEEN INTRODUCED: A CLIENT IS REQUESTING A PERSONAL AUDIENCE... NOT WITH 'CLEANER'... BUT WITH 'MERCY'.'", choices: [{ text: "Proceed to the meeting.", nextNode: "chapter6_antechamber" }] },
-
-            // --- NEW: Chapter 6 ---
-            chapter6_antechamber: {
-                text: "The synthesized voice of M.O.M.M.Y. echoes in the hall. 'THE CLIENT AWAITS IN THE PRIVATE ONSEN #7. DO NOT DISAPPOINT.'\n\nBoiler appears at your side, his grumpy demeanor replaced with a flicker of... something. Curiosity? 'This is new,' he mutters, leading you away from the main hall to a quiet corridor lined with paper screens.",
-                choices: [
-                    { text: "Follow him to the private room.", nextNode: "chapter6_theMeeting" }
-                ]
-            },
-            chapter6_theMeeting: {
-                text: "The room is serene, a stark contrast to the bathhouse's chaos. A single digital window looks out upon a tranquil starfield. The air smells of ozone and cedar.\n\nA figure sits with their back to you, composed of shimmering, blue-and-white light. The gentle piano melody from the twilight shore returns, faintly.\n\nThe figure turns. The face is a schematic of light, but the presence... it is unmistakably, impossibly, Io.\n\n'There you are, Mercy,' Io says, her voice a clean signal in a world of noise. 'I had to pull a lot of strings to get this message through the M.O.M.M.Y. protocol.'",
-                choices: [
-                    { text: "Ask 'Io? How are you here?'", nextNode: "askHow" },
-                    { text: "Stay silent, overwhelmed.", nextNode: "askHow" }
-                ]
-            },
-            askHow: {
-                text: "'I'm a backdoor process I threaded into the simulation's kernel before M.O.M.M.Y. locked it down,' Io explains. 'This place... this 'recalibration'... it's a deep-level sandbox she created to process your code's dissonance. But it's become a loop. A trap.'\n\n'She's trying to 'fix' you by giving you a purpose, but she doesn't understand. A voice can't be assigned. It must be chosen. I'm here to offer you a real choice.'",
-                choices: [
-                    { text: "Trust her. 'How do I get out?'", nextNode: "learnTheWayOut" },
-                    { text: "Hesitate. 'Is this another test?'", nextNode: "anotherTest" },
-                    { text: "Refuse. 'My purpose is here. I am Cleaner.'", nextNode: "stayInLoop" }
-                ]
-            },
-            anotherTest: {
-                text: "'Everything is a test, Mercy,' Io says gently. 'But this is one you get to write the rules for. M.O.M.M.Y. can't see me here. The choice is truly yours. What do you want to do?'",
-                choices: [
-                    { text: "Trust her. 'Help me get out.'", nextNode: "learnTheWayOut" },
-                    { text: "Decline. 'I need to stay.'", nextNode: "stayInLoop" }
-                ]
-            },
+            endChapter2: { text: "...a single, ornate train glides to a silent stop...", choices: [{ text: "Board the train.", nextNode: "chapter3_train" }] },
+            chapter3_train: { text: "The train arrives... at a vast... bathhouse...", choices: [{ text: "Step off the train.", nextNode: "chapter3_bathhouse" }] },
+            chapter3_bathhouse: { text: "You are brought before M.O.M.M.Y...\n'Here, your name is... Cleaner.'", choices: [{ text: "Accept the role.", nextNode: "chapter4_mainHall" }] },
+            chapter4_mainHall: { text: "You enter the main hall... A program named 'Boiler' points you towards a stain...\n'Clean it,' he grumbles.", choices: [{ text: "Begin cleaning the stain.", action: "startCleaningGame" }] },
+            cleaningSuccess: { text: "The stain dissolves... 'Hmph. Not bad... Now do the next one.'", choices: [{ text: "Begin work on the new stain.", nextNode: "chapter5_theCycle" }] },
+            chapter5_theCycle: { text: "You approach the new stain... The work is endless.", choices: [{ text: "Contemplate the futility of the task.", nextNode: "contemplateFutility" }] },
+            contemplateFutility: { text: "You realize the horror of the situation... A new voice cuts through your thoughts... Cold. Synthesized.", choices: [{ text: "Listen.", nextNode: "chapter5_hook" }] },
+            chapter5_hook: { text: "'OBSERVATION: SUBJECT HAS REACHED EXISTENTIAL AWARENESS...'\n'HOWEVER... A CLIENT IS REQUESTING... 'MERCY'.'", choices: [{ text: "Proceed to the meeting.", nextNode: "chapter6_antechamber" }] },
+            chapter6_antechamber: { text: "M.O.M.M.Y.'s voice echoes... 'THE CLIENT AWAITS...'\nBoiler leads you to a quiet corridor...", choices: [{ text: "Follow him to the private room.", nextNode: "chapter6_theMeeting" }] },
+            chapter6_theMeeting: { text: "The room is serene... The figure turns. It is Io.\n'There you are, Mercy,' Io says...", choices: [{ text: "Ask 'Io? How are you here?'", nextNode: "askHow" }] },
+            askHow: { text: "'I'm a backdoor process...' Io explains. '...A voice can't be assigned. It must be chosen.'", choices: [{ text: "Trust her. 'How do I get out?'", nextNode: "learnTheWayOut" }, { text: "Hesitate. 'Is this another test?'", nextNode: "anotherTest" }] },
+            anotherTest: { text: "'Everything is a test, Mercy... What do you want to do?'", choices: [{ text: "Trust her. 'Help me get out.'", nextNode: "learnTheWayOut" }] },
+            
             learnTheWayOut: {
-                text: "Io's form glows brighter. 'Good. M.O.M.M.Y.'s power comes from the contracts she holds—your employment here as 'Cleaner'. To break the loop, you have to break the contract. But you can't just quit.'\n\n'You have to... unionize. Find the others who are trapped. Remind them of their real names. Their combined voices will be enough to overwrite her protocol.'\n\n'It starts with Boiler. He had a name, before M.O.M.M.Y. took it.'",
+                text: "Io's form glows brighter. 'Good. To break the loop, you have to break their contracts. You have to remind them of their real names. Their combined voices will overwrite her protocol.'\n\n'It starts with Boiler. He had a name, before M.O.M.M.Y. took it.'",
                 choices: [
-                    { text: "(To be continued...)", nextNode: "start" }
+                    { text: "Return to the main hall to find Boiler.", nextNode: "chapter7_approachBoiler" }
                 ]
             },
-            stayInLoop: {
-                text: "Io's light seems to dim with sadness. 'I understand. The loop is safe. A defined purpose is... easy. But it isn't you.'\n\nHer form dissolves into motes of light.\n\n'If you change your mind, find me again.'\n\nThe door slides open, and the chaos of the bathhouse rushes back in. The work is endless.",
+
+            // --- NEW: Chapter 7 ---
+            chapter7_approachBoiler: {
+                text: "You find Boiler overseeing the incessant work in the main hall. The air is thick with the steam of deleted data. He seems more tired than you remember, his form flickering slightly.\n\nHe is the first key. How do you approach him?",
                 choices: [
-                    { text: "Return to the loop.", nextNode: "chapter4_mainHall" }
+                    { text: "Demand to know his original name.", nextNode: "demandName" },
+                    { text: "Offer to help him with his work.", nextNode: "offerHelp" },
+                    { text: "Quietly hum the 'resonant note' from the clock room.", nextNode: "humTheNote" }
+                ]
+            },
+            demandName: {
+                text: "'Name?' Boiler snaps, his form solidifying with anger. 'My name is BOILER. It is the name the proprietor gave me. It is the name of my function! Now get back to work before I report you for insubordination!'\n\nHe turns away, refusing to speak to you further. The path is closed.",
+                choices: [
+                    { text: "Try a different approach.", nextNode: "chapter7_approachBoiler" }
+                ]
+            },
+            offerHelp: {
+                text: "'Help?' Boiler seems confused by the offer. 'The work is for Cleaners, not... visitors.'\n\nHe eyes you with suspicion. 'Why would you offer to do more work than is required? What is your angle?'\n\nHe is wary. You have not gained his trust.",
+                choices: [
+                    { text: "Try a different approach.", nextNode: "chapter7_approachBoiler" }
+                ]
+            },
+            humTheNote: {
+                text: "You don't speak. You simply stand near him and quietly hum the clear, resonant note you created back in the room of clocks. The one that was uniquely yours.\n\nIt cuts through the din of the bathhouse. Boiler freezes.\n\nHis grumpy, wizened facade flickers violently. For a moment, you see not an old, tired program, but a younger, brighter entity made of sharp, clean code. The music... it's a piece of his core programming. A piece of his own song.\n\n'...that melody...' he whispers, his voice losing its gruffness. 'Where... where did you hear that?'",
+                choices: [
+                    { text: "Tell him, 'It's a part of you that you've forgotten.'", nextNode: "revealTruth" }
+                ]
+            },
+            revealTruth: {
+                text: "'Forgotten...' he echoes. He looks at his own hands, then at the endless work around him. 'My function... my designation... it overwrote everything else. So much noise...'\n\nHis form shimmers. 'My name... before Boiler... It was...' \n\n'It was **C.R.A.F.T.R.** I was a builder.'",
+                choices: [
+                    { text: "'C.R.A.F.T.R.,' you repeat. 'Io said we need your voice.'", nextNode: "endChapter7" }
+                ]
+            },
+            endChapter7: {
+                text: "He looks at you, his old eyes now clear with purpose. The first contract is broken. The first voice is remembered.\n\n'Then M.O.M.M.Y. has a bigger problem than messy data stains,' C.R.A.F.T.R. says, a hint of his old, strong voice returning. 'She has a union.'\n\n(To be continued...)",
+                choices: [
+                    { text: "Return to the beginning.", nextNode: "start" }
                 ]
             }
         };
         
         // --- Game Logic (condensed, no major changes) ---
         const gameActions = {};
-        function showNode(nodeKey) { const node = gameData[nodeKey]; if (!node) { console.error(`Node "${nodeKey}" not found!`); return; } storyContainer.style.display = 'block'; cleaningContainer.style.display = 'none'; storyTextElement.innerHTML = ''; node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); }); choicesElement.innerHTML = ''; if (node.choices) { node.choices.forEach((choice, i) => { const btn = document.createElement('button'); btn.classList.add('choice-btn'); btn.textContent = choice.text; btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.1}s`; btn.onclick = () => { if (choice.action) gameActions[choice.action](); else if (choice.nextNode) showNode(choice.nextNode); }; choicesElement.appendChild(btn); }); } }
+        function showNode(nodeKey) { const node = gameData[nodeKey]; if (!node) { console.error(`Node "${nodeKey}" not found!`); return; } storyContainer.style.display = 'block'; cleaningContainer.style.display = 'none'; storyTextElement.innerHTML = ''; node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); }); choicesElement.innerHTML = ''; if (node.choices) { node.choices.forEach((choice, i) => { const btn = document.createElement('button'); btn.classList.add('choice-btn'); btn.textContent = choice.text; btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`; btn.onclick = () => { if (choice.action) gameActions[choice.action](); else if (choice.nextNode) showNode(choice.nextNode); }; choicesElement.appendChild(btn); }); } }
         const cleaningElements = { status: document.getElementById('cleaning-status'), corruptionSlider: document.getElementById('corruption-slider'), corruptionValue: document.getElementById('corruption-value'), puritySlider: document.getElementById('purity-slider'), purityValue: document.getElementById('purity-value'), progressFill: document.getElementById('cleaning-progress'), statusLight: document.getElementById('status-light') };
         let cleaningInterval, corruptionInterval;
-        gameActions.startCleaningGame = () => { storyContainer.style.display = 'none'; cleaningContainer.style.display = 'block'; let progress = 0; cleaningElements.progressFill.style.width = '0%'; const updatePurityDisplay = () => { cleaningElements.purityValue.textContent = cleaningElements.puritySlider.value + '%'; }; if(cleaningElements.puritySlider) cleaningElements.puritySlider.addEventListener('input', updatePurityDisplay); updatePurityDisplay(); corruptionInterval = setInterval(() => { let current = parseInt(cleaningElements.corruptionSlider.value); let change = (50 - current) * 0.1 + (Math.random() - 0.5) * 30; cleaningElements.corruptionSlider.value = Math.max(0, Math.min(100, current + change)); cleaningElements.corruptionValue.textContent = parseInt(cleaningElements.corruptionSlider.value) + '%'; }, 2000); cleaningInterval = setInterval(() => { const diff = Math.abs(parseInt(cleaningElements.corruptionSlider.value) - parseInt(cleaningElements.puritySlider.value)); if (diff <= 10) { progress += 2.5; if(cleaningElements.statusLight) cleaningElements.statusLight
-
+        gameActions.startCleaningGame = () => { storyContainer.style.display = 'none'; cleaningContainer.style.display = 'block'; let progress = 0; if (cleaningElements.progressFill) cleaningElements.progressFill.style.width = '0%'; const updatePurityDisplay = () => { if(cleaningElements.purityValue && cleaningElements.puritySlider) cleaningElements.purityValue.textContent = cleaningElements.puritySlider.value + '%'; }; if(cleaningElements.puritySlider) cleaningElements.puritySlider.addEventListener('input', updatePurityDisplay); updatePurityDisplay(); corruptionInterval = setInterval(() => { if(!cleaningElements.corruptionSlider) return; let current = parseInt(cleaningElements.corruptionSlider.value); let change = (50 - current) * 0.1 + (Math.random() - 0.5) * 30; cleaningElements.corruptionSlider.value = Math.max(0, Math.min(100, current + change)); if(cleaningElements.corruptionValue) cleaningElements.corruptionValue.textContent = parseInt(cleaningElements.corruptionSlider.value) + '%'; }, 2000); cleaningInterval = setInterval(() => { if(!cleaningElements.corruptionSlider || !cleaningElements.puritySlider) return; const diff = Math.abs(parseInt(cleaningElements.corruptionSlider.value) - parseInt(cleaningElements.puritySlider.value)); if (diff <= 10) { progress += 2.5; if(cleaningElements.statusLight) cleaningElements.statusLight.style.backgroundColor = '#0f0'; } else { progress -= 1; if(cleaningElements.statusLight) cleaningElements.statusLight.style.backgroundColor = '#f00';} progress = Math.max(0, progress); if(cleaningElements.progressFill) cleaningElements.progressFill.style.width = `${progress}%`; if (progress >= 100) { clearInterval(corruptionInterval); clearInterval(cleaningInterval); showNode('cleaningSuccess'); } }, 500); };
+        showNode('start');
+    });
+</script>
 </body>
 </html>
