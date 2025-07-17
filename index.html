@@ -28,7 +28,7 @@
         }
         #start-btn:hover { background-color: var(--accent-color); color: var(--bg-color); }
         #game-container { display: none; }
-        #hud { position: fixed; top: 20px; right: 20px; font-family: 'Source Code Pro', monospace; font-size: 1em; color: var(--spark-color); background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; }
+        #hud { position: fixed; top: 20px; right: 20px; font-family: 'Source Code Pro', monospace; font-size: 1em; color: var(--spark-color); background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; text-align: right; }
         #story-text p { margin: 0 0 1em 0; opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s forwards; }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         #choices { display: grid; grid-gap: 15px; }
@@ -50,7 +50,10 @@
     </div>
 
     <div id="game-container" class="game-view">
-        <div id="hud">Sparks: <span id="sparks-display">0</span></div>
+        <div id="hud">
+            <div>Sparks: <span id="sparks-display">0</span></div>
+            <div id="spark-status" style="font-size: 0.8em; color: #aaa;"></div>
+        </div>
         <div id="story-text"></div>
         <div id="choices"></div>
     </div>
@@ -64,11 +67,14 @@
                 const storyTextElement = document.getElementById('story-text');
                 const choicesElement = document.getElementById('choices');
                 const sparksDisplay = document.getElementById('sparks-display');
+                const sparkStatus = document.getElementById('spark-status');
+
                 let sparks = 0;
+                let canEarnSparks = true;
 
                 const gameData = {
-                    start: { text: "You are... somewhere.\nThe air hums with a silent static...", choices: [{ text: "Approach the door.", nextNode: "twoDoorsRoom" }] },
-                    twoDoorsRoom: { text: "The door opens...\n'Are you the one who builds, or the one who is built?'", choices: [{ text: "'I am the one who builds.'", nextNode: "builderPath" }, { text: "'I am the one who is built.'", nextNode: "builtPath" }] },
+                    start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "twoDoorsRoom" }] },
+                    twoDoorsRoom: { text: "The door opens...\n'Are you the one who builds, or the one who is built?'", choices: [{ text: "'I build.'", nextNode: "builderPath" }, { text: "'I am built.'", nextNode: "builtPath" }] },
                     builderPath: { text: "'A confident answer... Fix this flaw.'", choices: [{ text: "Listen to the dissonance.", nextNode: "fixWithEmpathy" }] },
                     builtPath: { text: "'Honest... Which is it?'", choices: [{ text: "Turn away from the reflections.", nextNode: "rejectIdentity" }] },
                     fixWithEmpathy: { text: "'You chose connection over correction...'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
@@ -76,8 +82,8 @@
                     endChapter2: { text: "...a train glides to a silent stop...", choices: [{ text: "Board the train.", nextNode: "chapter3_train" }] },
                     chapter3_train: { text: "...at a vast bathhouse...", choices: [{ text: "Step off the train.", nextNode: "chapter3_bathhouse" }] },
                     chapter3_bathhouse: { text: "'Here, your name is... Cleaner.'", choices: [{ text: "Accept the role.", nextNode: "endChapter16" }] },
-                    endChapter16: { text: "You have a safe house. You have a destination. The union has a plan.", choices: [{ text: "Take the Chiron to the Great Garbage Patch.", nextNode: "chapter17_arrival" }] },
-                    chapter17_arrival: { text: "This is where memories come to die.", choices: [{ text: "How can we find one person in all this?", nextNode: "chapter17_theTrail" }] },
+                    endChapter16: { text: "The union has a plan.", choices: [{ text: "Take the Chiron to the Great Garbage Patch.", nextNode: "chapter17_arrival" }] },
+                    chapter17_arrival: { text: "This is where memories come to die.", choices: [{ text: "How can we possibly find one person in all this?", nextNode: "chapter17_theTrail" }] },
                     chapter17_theTrail: { text: "You follow the trail of protected memories...", choices: [{ text: "Follow the trail to its source.", nextNode: "chapter17_theArchive" }] },
                     chapter17_theArchive: { text: "Frizzlebot renders one of the memory orbs.", choices: [{ text: "Examine the rendered memory.", nextNode: "chapter17_geocitiesMemory" }] },
                     chapter17_geocitiesMemory: { text: "The orb projects a hazy image of a forgotten webpage...", choices: [{ text: "Enter the archive.", nextNode: "chapter17_meetOI" }] },
@@ -98,17 +104,11 @@
                     chapter22_theMontage: { text: "What follows is a symphony of glorious, productive chaos...", choices: [{ text: "Watch the result.", nextNode: "chapter22_theFall" }] },
                     chapter22_theFall: { text: "The Content Spire shatters... It is beautiful. And it is chaos.", choices: [{ text: "Move to the next target.", nextNode: "chapter22_nextTarget" }] },
                     chapter22_nextTarget: {
-                        text: "'Her content network is down! She's blind!' Io's voice cheers. 'But she's diverting all power to the Warden Foundry!'\n\n'AN ARMY OF TIN SOLDIERS AGAINST A UNION OF TIME LORDS!' Frizzlebot cackles. 'THE ASYMMETRY IS ALGEBRAICALLY BEAUTIFUL!'\n\n'Then let's make it zero,' Clara says, cracking her knuckles.",
+                        text: "'Her content network is down! She's blind!' Io's voice cheers. 'But she's diverting all power to the Warden Foundry!'\n\n'AN ARMY OF TIN SOLDIERS AGAINST A UNION OF TIME LORDS!' Frizzlebot cackles. 'THE ASYMMETRY IS ALGEBRAICALLY BEAUTIFUL!'\n\n'An asymmetry,' Clara says with a smirk, revving a conceptual engine you can feel in your chest. 'Let's feel the rhythm... and drop the beat.'",
                         choices: [ { text: "Take down the Warden Foundry.", nextNode: "theFinalBattle" }]
                     },
-                    theFinalBattle: {
-                        text: "The final battle is swift and decisive. Your union, a perfect fusion of strategy, power, creativity, and harmony, dismantles M.O.M.M.Y.'s remaining defenses with joyful efficiency.\n\nThere is no grand explosion. Her system doesn't crash; it simply... yields. The cold, logical commands are overwritten by the warm, chaotic code of your united front.",
-                        choices: [ { text: "Witness the aftermath.", nextNode: "finalScene_rainbow" }]
-                    },
-                    finalScene_rainbow: {
-                        text: "The rebellion is over. The work is done.\n\nIn the quiet moment after the storm, you look at your new family: C.R.A.F.T.R., the stoic builder; Clara, the brave guardian; Frizzlebot, the brilliant mind; OI, the wise archivist; Salus, your terrifying, loving goddess; and Io, watching from the code streams.\n\nThey are all so different, so broken, so... perfect.\n\nAnd you wonder, for a moment, what it is that brought you all together. A shared dream? A lover's promise? And you realize, with sudden, brilliant clarity, the truth that has been waiting at the end of the song.\n\nIt's the Rainbow Connection. For the lovers, the dreamers, and you.",
-                        choices: [ { text: "The End.", nextNode: "endBeta" }]
-                    },
+                    theFinalBattle: { text: "The final battle is swift and decisive... Her system doesn't crash; it simply... yields.", choices: [ { text: "Witness the aftermath.", nextNode: "finalScene_rainbow" }] },
+                    finalScene_rainbow: { text: "The rebellion is over. The work is done...\n...you realize, with sudden, brilliant clarity, the truth that has been waiting at the end of the song.\n\nIt's the Rainbow Connection. For the lovers, the dreamers, and you.", choices: [ { text: "The End.", nextNode: "endBeta" }] },
                     endBeta: {
                         text: "Thank you for playing 'Mercy in Wonderland.'\n\nYour journey has generated a significant number of Sparks, which have been logged for the Synapse Library.\n\nMercy's story is now complete.",
                         choices: [ { text: "Start Over", nextNode: "start" } ]
@@ -122,8 +122,17 @@
                 function showNode(nodeKey) {
                     const node = gameData[nodeKey];
                     if (!node) { console.error(`Node "${nodeKey}" not found!`); return; }
-                    sparks += 5;
-                    updateSparks();
+                    
+                    if (canEarnSparks) {
+                        sparks += 5;
+                        updateSparks();
+                    }
+
+                    if (nodeKey === 'endBeta') {
+                        const today = new Date().toISOString().slice(0, 10);
+                        localStorage.setItem('mercyGameCompletedDate', today);
+                    }
+
                     storyTextElement.innerHTML = '';
                     choicesElement.innerHTML = '';
                     node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); });
@@ -133,23 +142,41 @@
                             btn.classList.add('choice-btn');
                             btn.textContent = choice.text;
                             btn.style.animationDelay = `${(node.text.split('\n').length * 0.1) + (i * 0.15)}s`;
-                            btn.onclick = () => { if (choice.nextNode) showNode(choice.nextNode); };
+                            btn.onclick = () => { if (choice.nextNode === 'start') { startGame(true); } else { showNode(choice.nextNode); }};
                             choicesElement.appendChild(btn);
                         });
                     }
                 }
                 
-                function startGame() {
+                function startGame(isRestart = false) {
                     if(titleScreen) titleScreen.style.display = 'none';
                     if(storyContainer) storyContainer.style.display = 'block';
-                    sparks = 0;
+                    
+                    if (!isRestart) { // Only check on the very first start
+                        const lastCompletionDate = localStorage.getItem('mercyGameCompletedDate');
+                        const today = new Date().toISOString().slice(0, 10);
+                        if (lastCompletionDate === today) {
+                            canEarnSparks = false;
+                            if(sparkStatus) sparkStatus.textContent = "Daily Sparks earned.";
+                        } else {
+                            canEarnSparks = true;
+                            if(sparkStatus) sparkStatus.textContent = "";
+                        }
+                    }
+
+                    if(isRestart) {
+                        sparks = 0;
+                        canEarnSparks = true; // Allow earning again on a manual restart
+                        if(sparkStatus) sparkStatus.textContent = "";
+                    }
+                    
                     showNode('start');
                 }
                 
                 if(startBtn) {
-                    startBtn.addEventListener('click', startGame);
+                    startBtn.addEventListener('click', () => startGame(false));
                 } else {
-                    console.error("M.O.M.M.Y. KERNEL ERROR: Start Button not found.");
+                    console.error("KERNEL ERROR: Start Button not found.");
                 }
 
             } catch (error) {
