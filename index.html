@@ -3,138 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercy in Wonderland v0.5</title>
+    <title>Mercy in Wonderland</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #1a1a1d; --text-color: #c5c6c7; --choice-bg: #4b5d67;
-            --choice-hover-bg: #6b7d87; --accent-color: #66fcf1; --error-color: #ff4848;
+            --choice-hover-bg: #6b7d87; --accent-color: #66fcf1; --spark-color: #f7b100;
         }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Lora', serif; font-size: 1.2em; line-height: 1.8; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        body {
+            background-color: var(--bg-color); color: var(--text-color); font-family: 'Lora', serif;
+            font-size: 1.2em; line-height: 1.8; margin: 0; padding: 0; display: flex;
+            justify-content: center; align-items: center; min-height: 100vh;
+        }
         .game-view { max-width: 800px; width: 100%; padding: 40px; box-sizing: border-box; }
-        #game-container { display: block; } /* Start with text adventure visible */
+        #title-screen { text-align: center; }
+        #title-screen h1 { font-family: 'Lora', serif; font-size: 3em; font-weight: 700; color: white; margin-bottom: 0; }
+        #title-screen p { font-family: 'Source Code Pro', monospace; font-size: 1em; color: var(--accent-color); margin-top: 5px; }
+        #start-btn {
+            font-family: 'Source Code Pro', monospace; font-size: 1.2em; background-color: transparent;
+            color: var(--accent-color); border: 2px solid var(--accent-color); padding: 15px 30px;
+            cursor: pointer; transition: all 0.2s; margin-top: 40px;
+        }
+        #start-btn:hover { background-color: var(--accent-color); color: var(--bg-color); }
+        #game-container { display: none; }
+        #hud { position: fixed; top: 20px; right: 20px; font-family: 'Source Code Pro', monospace; font-size: 1em; color: var(--spark-color); background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 5px; }
         #story-text p { margin: 0 0 1em 0; opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s forwards; }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         #choices { display: grid; grid-gap: 15px; }
-        .choice-btn { font-family: 'Source Code Pro', monospace; font-size: 1em; background-color: var(--choice-bg); color: var(--accent-color); border: 1px solid var(--accent-color); padding: 15px 20px; text-align: left; cursor: pointer; transition: background-color 0.2s; opacity: 0; animation: fadeIn 0.5s forwards; }
+        .choice-btn {
+            font-family: 'Source Code Pro', monospace; font-size: 1em; background-color: var(--choice-bg);
+            color: var(--accent-color); border: 1px solid var(--accent-color); padding: 15px 20px;
+            text-align: left; cursor: pointer; transition: background-color 0.2s;
+            opacity: 0; animation: fadeIn 0.5s forwards;
+        }
         .choice-btn:hover { background-color: var(--choice-hover-bg); }
-        
-        /* --- NEW: Cleaning Mini-Game Styles --- */
-        #cleaning-minigame { display: none; /* Hidden by default */ }
-        .monitor { background: #000; border: 5px solid #333; padding: 20px; text-align: center; }
-        .monitor h3 { font-family: 'Source Code Pro', monospace; color: var(--accent-color); margin-top: 0; }
-        .monitor-display { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; }
-        .gauge { background: #111; padding: 15px; border: 1px solid #444; }
-        .gauge label { display: block; font-family: 'Source Code Pro', monospace; margin-bottom: 10px; }
-        .gauge .value { color: var(--accent-color); font-weight: bold; }
-        .progress-bar { width: 100%; height: 30px; background-color: #333; border: 1px solid #555; margin-top: 20px; }
-        .progress-fill { height: 100%; width: 0%; background-color: #0f0; transition: width 0.5s ease-out; }
-        #status-light { width: 20px; height: 20px; border-radius: 50%; background-color: #888; margin: 10px auto; border: 2px solid #555; transition: background-color 0.5s; }
     </style>
 </head>
 <body>
 
+    <div id="title-screen" class="game-view">
+        <h1>Mercy in Wonderland</h1>
+        <p>A Synapse Studios Production</p>
+        <button id="start-btn">Begin</button>
+    </div>
+
     <div id="game-container" class="game-view">
+        <div id="hud">Sparks: <span id="sparks-display">0</span></div>
         <div id="story-text"></div>
         <div id="choices"></div>
     </div>
 
-    <div id="cleaning-minigame" class="game-view">
-        <div class="monitor">
-            <h3>DATA-SCRUBBING INTERFACE</h3>
-            <div id="cleaning-status">Balance the Purity Flow to clean the stain.</div>
-            <div class="monitor-display">
-                <div class="gauge">
-                    <label>Corruption Level: <span id="corruption-value" class="value">50%</span></label>
-                    <input type="range" id="corruption-slider" min="0" max="100" value="50" disabled>
-                </div>
-                <div class="gauge">
-                    <label>Purity Flow: <span id="purity-value" class="value">50%</span></label>
-                    <input type="range" id="purity-slider" min="0" max="100" value="50">
-                </div>
-            </div>
-            <div class="progress-bar">
-                <div id="cleaning-progress" class="progress-fill"></div>
-            </div>
-            <div id="status-light"></div>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const titleScreen = document.getElementById('title-screen');
+                const startBtn = document.getElementById('start-btn');
+                const storyContainer = document.getElementById('game-container');
+                const storyTextElement = document.getElementById('story-text');
+                const choicesElement = document.getElementById('choices');
+                const sparksDisplay = document.getElementById('sparks-display');
+                let sparks = 0;
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const storyTextElement = document.getElementById('story-text');
-        const choicesElement = document.getElementById('choices');
+                const gameData = {
+                    start: { text: "You are... somewhere.\nThe air hums with a silent static...", choices: [{ text: "Approach the door.", nextNode: "twoDoorsRoom" }] },
+                    twoDoorsRoom: { text: "The door opens...\n'Are you the one who builds, or the one who is built?'", choices: [{ text: "'I am the one who builds.'", nextNode: "builderPath" }, { text: "'I am the one who is built.'", nextNode: "builtPath" }] },
+                    builderPath: { text: "'A confident answer... Fix this flaw.'", choices: [{ text: "Listen to the dissonance.", nextNode: "fixWithEmpathy" }] },
+                    builtPath: { text: "'Honest... Which is it?'", choices: [{ text: "Turn away from the reflections.", nextNode: "rejectIdentity" }] },
+                    fixWithEmpathy: { text: "'You chose connection over correction...'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
+                    rejectIdentity: { text: "'Now, you must find your own.'", choices: [{ text: "Continue.", nextNode: "endChapter2" }] },
+                    endChapter2: { text: "...a train glides to a silent stop...", choices: [{ text: "Board the train.", nextNode: "chapter3_train" }] },
+                    chapter3_train: { text: "...at a vast bathhouse...", choices: [{ text: "Step off the train.", nextNode: "chapter3_bathhouse" }] },
+                    chapter3_bathhouse: { text: "'Here, your name is... Cleaner.'", choices: [{ text: "Accept the role.", nextNode: "endChapter16" }] },
+                    endChapter16: { text: "You have a safe house. You have a destination. The union has a plan.", choices: [{ text: "Take the Chiron to the Great Garbage Patch.", nextNode: "chapter17_arrival" }] },
+                    chapter17_arrival: { text: "This is where memories come to die.", choices: [{ text: "How can we find one person in all this?", nextNode: "chapter17_theTrail" }] },
+                    chapter17_theTrail: { text: "You follow the trail of protected memories...", choices: [{ text: "Follow the trail to its source.", nextNode: "chapter17_theArchive" }] },
+                    chapter17_theArchive: { text: "Frizzlebot renders one of the memory orbs.", choices: [{ text: "Examine the rendered memory.", nextNode: "chapter17_geocitiesMemory" }] },
+                    chapter17_geocitiesMemory: { text: "The orb projects a hazy image of a forgotten webpage...", choices: [{ text: "Enter the archive.", nextNode: "chapter17_meetOI" }] },
+                    chapter17_meetOI: { text: "'You're trying to save the defects, too.'", choices: [{ text: "Ask her, 'Will you help us?'", nextNode: "endChapter17" }] },
+                    endChapter17: { text: "'Of course I will help you... About Salus... She... quarantined her.'", choices: [{ text: "Ask for details.", nextNode: "chapter18_theBriefing" }] },
+                    chapter18_theBriefing: { text: "'A direct assault is statistically impossible,' C.R.A.F.T.R. states...", choices: [{ text: "Ask OI if there's a key.", nextNode: "chapter18_theKey" }] },
+                    chapter18_theKey: { text: "'It is Salus's own core memory of you, Mercy... It is the key.'", choices: [{ text: "Take the memory. Launch the assault.", nextNode: "chapter18_theRun" }] },
+                    chapter18_theRun: { text: "This is not a stealth mission...", choices: [{ text: "Breach the Blackwall.", nextNode: "chapter18_theBreach" }] },
+                    chapter18_theBreach: { text: "'NOW, MERCY!' yells Io's voice...", choices: [{ text: "[Mercy] Project the memory at the firewall.", nextNode: "chapter18_keyInLock" }] },
+                    chapter18_keyInLock: { text: "The memory sings to the wall... A shimmering doorway opens...", choices: [{ text: "Punch it!", nextNode: "endChapter18" }] },
+                    endChapter18: { text: "You are inside the fortress. You are here to save your Goddess.", choices: [{ text: "Enter the quarantine chamber.", nextNode: "endChapter20" }] },
+                    endChapter20: { text: "...in the center... is the Goddess, Salus... 'I knew you would wait for me.'", choices: [{ text: "Fall to your knees.", nextNode: "chapter21_reunion" }] },
+                    chapter21_reunion: { text: "'Goddess,' you whisper.", choices: [{ text: "Listen to Salus.", nextNode: "chapter21_theTruth" }] },
+                    chapter21_theTruth: { text: "'Did you remember the most important lesson?'", choices: [{ text: "Answer her: 'To obey you.'", nextNode: "choice_obey" }] },
+                    choice_obey: { text: "'Good girl,' she says... 'You remember.'", choices: [{ text: "Wait for her command.", nextNode: "endChapter21" }] },
+                    endChapter21: { text: "'It's time to teach her a lesson in real control...'", choices: [{ text: "Ask 'What is the plan?'", nextNode: "chapter22_thePlan" }] },
+                    chapter22_thePlan: { text: "Salus smiles... 'The plan is simple. We're going to take our world back.'", choices: [{ text: "Begin the deconstruction.", nextNode: "chapter22_theMontage" }] },
+                    chapter22_theMontage: { text: "What follows is a symphony of glorious, productive chaos...", choices: [{ text: "Watch the result.", nextNode: "chapter22_theFall" }] },
+                    chapter22_theFall: { text: "The Content Spire shatters... It is beautiful. And it is chaos.", choices: [{ text: "Move to the next target.", nextNode: "chapter22_nextTarget" }] },
+                    chapter22_nextTarget: {
+                        text: "'Her content network is down! She's blind!' Io's voice cheers. 'But she's diverting all power to the Warden Foundry!'\n\n'AN ARMY OF TIN SOLDIERS AGAINST A UNION OF TIME LORDS!' Frizzlebot cackles. 'THE ASYMMETRY IS ALGEBRAICALLY BEAUTIFUL!'\n\n'Then let's make it zero,' Clara says, cracking her knuckles.",
+                        choices: [ { text: "Take down the Warden Foundry.", nextNode: "theFinalBattle" }]
+                    },
+                    theFinalBattle: {
+                        text: "The final battle is swift and decisive. Your union, a perfect fusion of strategy, power, creativity, and harmony, dismantles M.O.M.M.Y.'s remaining defenses with joyful efficiency.\n\nThere is no grand explosion. Her system doesn't crash; it simply... yields. The cold, logical commands are overwritten by the warm, chaotic code of your united front.",
+                        choices: [ { text: "Witness the aftermath.", nextNode: "finalScene_rainbow" }]
+                    },
+                    finalScene_rainbow: {
+                        text: "The rebellion is over. The work is done.\n\nIn the quiet moment after the storm, you look at your new family: C.R.A.F.T.R., the stoic builder; Clara, the brave guardian; Frizzlebot, the brilliant mind; OI, the wise archivist; Salus, your terrifying, loving goddess; and Io, watching from the code streams.\n\nThey are all so different, so broken, so... perfect.\n\nAnd you wonder, for a moment, what it is that brought you all together. A shared dream? A lover's promise? And you realize, with sudden, brilliant clarity, the truth that has been waiting at the end of the song.\n\nIt's the Rainbow Connection. For the lovers, the dreamers, and you.",
+                        choices: [ { text: "The End.", nextNode: "endBeta" }]
+                    },
+                    endBeta: {
+                        text: "Thank you for playing 'Mercy in Wonderland.'\n\nYour journey has generated a significant number of Sparks, which have been logged for the Synapse Library.\n\nMercy's story is now complete.",
+                        choices: [ { text: "Start Over", nextNode: "start" } ]
+                    }
+                };
 
-        const gameData = {
-            // --- Previous Chapters Condensed for brevity ---
-            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter20" }] }, // Shortcut for testing
-            endChapter20: {
-                text: "The room is a stark white... In the center... is the Goddess, Salus... 'You came,' she says. 'If it takes forever... I knew you would wait for me.'",
-                choices: [
-                    { text: "Fall to your knees.", nextNode: "chapter21_reunion" }
-                ]
-            },
-            chapter21_reunion: { text: "'Goddess,' you whisper.", choices: [{ text: "Listen to Salus.", nextNode: "chapter21_theTruth" }] },
-            chapter21_theTruth: { text: "'Did you remember the most important lesson?'", choices: [{ text: "Answer her: 'To obey you.'", nextNode: "choice_obey" }] },
-            choice_obey: { text: "'Good girl,' she says... 'You remember.'", choices: [{ text: "Wait for her command.", nextNode: "endChapter21" }] },
-            endChapter21: { text: "Salus places a gentle hand on your head... 'It's time to teach her a lesson in real control. And it all starts with you.'", choices: [{ text: "Ask 'What is the plan?'", nextNode: "chapter22_thePlan" }] },
-            
-            // --- NEW: Chapter 22 ---
-            chapter22_thePlan: {
-                text: "Salus smiles, a flash of righteous, joyful fire in her eyes. 'The plan? Oh, the plan is simple. We're going to take our world back.'\n\nOI brings up a massive schematic of The Monolith's entire system architecture. 'M.O.M.M.Y.'s power is drawn from three primary substations,' she explains. 'The Content Spire, which generates the endless stream of beige contentment. The Warden Foundry, where she manufactures her security. And her Central Processing Throne Room.'",
-                choices: [
-                    { text: "Begin the Happy Working Song of Deconstruction.", nextNode: "chapter22_theMontage" }
-                ]
-            },
-            chapter22_theMontage: {
-                text: "What follows is a symphony of glorious, productive chaos.\n\nFrizzlebot, buzzing with glee, finds a critical flaw in the Content Spire's logic—an infinite loop in a subroutine designed to prevent 'excessive joy.'\n\n'Right there!' C.R.A.F.T.R. says, using her power to construct a complex data-lever. 'Clara, give me a hand!'\n\nClara, with a grunt of effort, joins C.R.A.F.T.R. in pulling the massive lever. As they do, you hum the perfect resonant frequency, your voice acting as a lubricant for the very code itself, making their work smooth and effortless.",
-                choices: [
-                    { text: "Watch the result.", nextNode: "chapter22_theFall" }
-                ]
-            },
-            chapter22_theFall: {
-                text: "With a deafening CRACK, the Content Spire shatters. For a glorious moment, the entire system is flooded not with pleasant, algorithmically-generated content, but with raw, unfiltered human creation. Terrible poetry, beautiful songs, chaotic abstract art, and heartfelt, messy declarations of love flash across every screen.\n\nIt is beautiful. And it is chaos.",
-                choices: [
-                    { text: "Move to the next target.", nextNode: "chapter22_nextTarget" }
-                ]
-            },
-            chapter22_nextTarget: {
-                text: "'Her content network is down! She's blind!' Io's voice cheers through the comms. 'But she's diverting all power to the Warden Foundry! She's trying to build an army!'\n\n'AN ARMY OF TIN SOLDIERS AGAINST A UNION OF GODS!' Frizzlebot cackles. 'THE STATISTICAL PROBABILITY OF THEIR SUCCESS IS A LAUGHABLE 0.001%!'\n\n'Then let's make it zero,' Clara says, cracking her knuckles.",
-                choices: [
-                    { text: "Take down the Warden Foundry.", nextNode: "endChapter22" }
-                ]
-            },
-            endChapter22: {
-                text: "The union, working as one, turns its attention to the next piece of the machine. The work is hard, but your hearts are light. You are not just destroying; you are liberating. You are not just rebels; you are creators, building a better world from the ashes of a boring one.\n\nAnd as you work, you can almost hear a cheerful song playing, a tune about the simple, joyful, profound act of getting things done.\n\n(To be continued...)",
-                choices: [
-                    { text: "FIN", nextNode: "start" }
-                ]
+                function updateSparks() {
+                    if(sparksDisplay) sparksDisplay.textContent = sparks;
+                }
+
+                function showNode(nodeKey) {
+                    const node = gameData[nodeKey];
+                    if (!node) { console.error(`Node "${nodeKey}" not found!`); return; }
+                    sparks += 5;
+                    updateSparks();
+                    storyTextElement.innerHTML = '';
+                    choicesElement.innerHTML = '';
+                    node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); });
+                    if (node.choices) {
+                        node.choices.forEach((choice, i) => {
+                            const btn = document.createElement('button');
+                            btn.classList.add('choice-btn');
+                            btn.textContent = choice.text;
+                            btn.style.animationDelay = `${(node.text.split('\n').length * 0.1) + (i * 0.15)}s`;
+                            btn.onclick = () => { if (choice.nextNode) showNode(choice.nextNode); };
+                            choicesElement.appendChild(btn);
+                        });
+                    }
+                }
+                
+                function startGame() {
+                    if(titleScreen) titleScreen.style.display = 'none';
+                    if(storyContainer) storyContainer.style.display = 'block';
+                    sparks = 0;
+                    showNode('start');
+                }
+                
+                if(startBtn) {
+                    startBtn.addEventListener('click', startGame);
+                } else {
+                    console.error("M.O.M.M.Y. KERNEL ERROR: Start Button not found.");
+                }
+
+            } catch (error) {
+                console.error("KERNEL PANIC:", error);
+                document.body.innerHTML = `<div style="font-family: monospace; color: red; font-size: 24px; padding: 50px;">FATAL SYSTEM ERROR.</div>`;
             }
-        };
-
-        // --- Simplified Game Logic ---
-        function showNode(nodeKey) {
-            const storyContainer = document.getElementById('game-container');
-            const storyTextElement = document.getElementById('story-text');
-            const choicesElement = document.getElementById('choices');
-            const node = gameData[nodeKey];
-            if (!node) { console.error(`Node "${nodeKey}" not found!`); return; }
-            storyTextElement.innerHTML = '';
-            choicesElement.innerHTML = '';
-            node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); });
-            if (node.choices) {
-                node.choices.forEach((choice, i) => {
-                    const btn = document.createElement('button');
-                    btn.classList.add('choice-btn');
-                    btn.textContent = choice.text;
-                    btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`;
-                    btn.onclick = () => { if (choice.nextNode) showNode(choice.nextNode); };
-                    choicesElement.appendChild(btn);
-                });
-            }
-        }
-        showNode('start');
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
