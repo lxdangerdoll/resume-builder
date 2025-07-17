@@ -64,73 +64,81 @@
     document.addEventListener('DOMContentLoaded', () => {
         const storyTextElement = document.getElementById('story-text');
         const choicesElement = document.getElementById('choices');
-        const storyContainer = document.getElementById('game-container');
-        const cleaningContainer = document.getElementById('cleaning-minigame');
 
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
-            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "chapter15_aftermath" }] }, // Shortcut for testing
-            endChapter14: { text: "You are driving at impossible speeds... You're running wild.", choices: [{ text: "Keep driving.", nextNode: "chapter15_openRoad" }] },
-            chapter15_openRoad: { text: "The raw guitar riff from the engine becomes your soundtrack...", choices: [{ text: "Check the proximity alert.", nextNode: "chapter15_theFirewall" }] },
-            chapter15_theFirewall: { text: "'A class-one firewall,' C.R.A.F.T.R. says...", choices: [{ text: "[Frizzlebot] 'I'm detecting a temporary flux! We can punch through the gap!'", nextNode: "choice_punchIt" }] },
-            choice_punchIt: { text: "For a heart-stopping moment, your entire reality is a blinding torrent of red static...", choices: [{ text: "...and then you're through.", nextNode: "chapter15_aftermath" }] },
-            chapter15_aftermath: { text: "You burst back onto the clean, open data-stream... 'We need a plan. A place to hide.'", choices: [{ text: "Ask Frizzlebot to find a safe harbor.", nextNode: "endChapter15" }] },
-            endChapter15: { text: "Frizzlebot pulls up a massive, chaotic system map... 'THERE! A DECOMMISSIONED GEOCITIES NEIGHBORHOOD... IT'S PERFECT!'", choices: [{ text: "Head for the ghost town.", nextNode: "chapter16_arrival" }] },
-
-            // --- NEW: Chapter 16 ---
-            chapter16_arrival: {
-                text: "C.R.A.F.T.R. turns the Chiron off the main data-highway and onto a broken, unmaintained access road paved with pixelated cobblestones. The sleek architecture of M.O.M.M.Y.'s system gives way to something... older.\n\nYou pull into 'Heartland/Hills/1432'. A tinny, cheerful MIDI version of a 90s pop song begins playing automatically from an unseen source.\n\nThe street is lined with digital 'houses'—personal homepages, each a chaotic explosion of personality under a starfield background.",
-                choices: [
-                    { text: "Get out of the car and explore.", nextNode: "chapter16_theNeighborhood" }
-                ]
-            },
-            chapter16_theNeighborhood: {
-                text: "The neighborhood is silent, save for the looping MIDIs. It feels abandoned, but traces of the original owners are everywhere. Frizzlebot is practically vibrating with joy at the raw, unfiltered data.\n\n'LOOK AT THIS BEAUTIFUL MESS! THE HTML ISN'T MINIFIED! THERE ARE FONT TAGS EVERYWHERE!' she broadcasts.\n\n'This place is a fortress of obscurity,' Clara agrees. 'M.O.M.M.Y.'s modern search algorithms would time out just trying to parse it. We'll be safe here.'\n\n'Where do we establish our secret rebel base?' C.R.A.F.T.R. asks.",
-                choices: [
-                    { text: "Investigate the page with the flaming skull background.", nextNode: "exploreFlames" },
-                    { text: "Investigate the page covered in blinking glitter hearts.", nextNode: "exploreGlitter" },
-                    { text: "Investigate the page with a single 'Under Construction' GIF.", nextNode: "exploreConstruction" }
-                ]
-            },
-            exploreFlames: {
-                text: "You open the 'house'. It's a page dedicated to a long-forgotten death metal band. The guestbook is filled with arguments between 'xX_Slayer_Xx' and 'MetalGurl98' from October 1999. The links are all dead.\n\nFascinating, but no tactical value. You close the page.",
-                choices: [
-                    { text: "Look elsewhere.", nextNode: "chapter16_theNeighborhood" }
-                ]
-            },
-            exploreGlitter: {
-                text: "You enter a page saturated in magenta and blinking hearts. It's a fan shrine for a boy band, complete with badly compressed JPEGs and a 'Web Ring' widget whose links have long since rotted away.\n\nFrizzlebot gets distracted trying to archive the terrible fanfiction she found in a hidden directory. C.R.A.F.T.R. has to pull her away.",
-                choices: [
-                    { text: "Look elsewhere.", nextNode: "chapter16_theNeighborhood" }
-                ]
-            },
-            exploreConstruction: {
-                text: "This page is almost empty. The background is a simple, repeating brick texture. In the center is a single animated GIF of a little construction worker digging, and a hit counter frozen at '0012'.\n\nIt's quiet. Unfinished. Abandoned. The perfect hideout.\n\nClara finds a single text file in the root directory: 'dev_log.txt'.",
-                choices: [
-                    { text: "Read the developer's log.", nextNode: "chapter16_theLog" }
-                ]
-            },
-            chapter16_theLog: {
-                text: "You open the file. The text is written in a simple, fixed-width font.\n\n'Log Entry 7. M.O.M.M.Y.'s 'standardization' protocol is a nightmare. She's wiping out all the creative tools. My old boss, OI, tried to argue for creative chaos, for user freedom. They called her a heretic and had her reassigned. A punishment posting.'\n\n'Last I heard, they put her in charge of the system's recycling bin. The Great Garbage Patch. A fitting punishment for someone who loved 'junk' code.'\n\n'I'm archiving this site and getting out of here before they give me a new name, too.'\n\nThe log is unsigned.",
-                choices: [
-                    { text: "You have your next lead.", nextNode: "endChapter16" }
-                ]
-            },
+            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter16" }] }, // Shortcut for testing
             endChapter16: {
-                text: "Frizzlebot projects the system map. 'THE GREAT GARBAGE PATCH! OF COURSE! IT'S A VAST, UNSTRUCTURED DATA-SEA OF DELETED FILES! THE PERFECT PLACE FOR A HERETIC TO HIDE!'\n\n'The Wizard of Oz is in the trash heap,' Clara says with a wry smile.\n\nYou have a safe house. You have a destination. The union has a plan.",
+                text: "'The Wizard of Oz is in the trash heap,' Clara says with a wry smile.\nYou have a safe house. You have a destination. The union has a plan.",
+                choices: [
+                    { text: "Take the Chiron Prototype to the Great Garbage Patch.", nextNode: "chapter17_arrival" }
+                ]
+            },
+
+            // --- NEW: Chapter 17 (Rewritten) ---
+            chapter17_arrival: {
+                text: "The sleek data-highway dissolves, and C.R.A.F.T.R. skillfully navigates the Chiron into the Great Garbage Patch.\n\nIt is not a trash heap. It is a vast, silent sea of fading, grey orbs, drifting in a slow, cosmic tide. Each one, C.R.A.F.T.R. explains, is a forgotten memory, a deleted file, a piece of a user's life deemed 'unnecessary' by M.O.M.M.Y.'s optimization protocols.\n\nThis is where memories come to die.",
+                choices: [
+                    { text: "How can we possibly find one person in all this?", nextNode: "chapter17_theTrail" }
+                ]
+            },
+            chapter17_theTrail: {
+                text: "Frizzlebot's chaotic energy is unusually subdued. 'SHE'S... NOT SPREADING OUT. SHE'S CONSOLIDATING.'\n\nShe projects a path on the windscreen. 'Look. Most of these memory orbs are fading to grey. But some... some are still glowing faintly. She's not hiding here. She's working. She's providing power to them, trying to keep them from fading completely.'\n\nYou follow the trail of protected memories, passing orbs that whisper of first loves, favorite songs, and terrible, personal poetry.",
+                choices: [
+                    { text: "Follow the trail to its source.", nextNode: "chapter17_theArchive" }
+                ]
+            },
+            chapter17_theArchive: {
+                text: "The trail leads to a small, humble structure built from old, humming server racks and powered by a tangled web of glowing cables. It's less a castle and more a library's forgotten archive wing.\n\nFrizzlebot manages to render the data of one of the memory orbs OI is protecting. It's a snapshot from a forgotten GeoCities page.",
+                choices: [
+                    { text: "[Explore] The archived memory.", nextNode: "chapter17_meetOI", url: "https://geocities.ws/heartland/pines/1409/" },
+                    { text: "Enter the structure without looking.", nextNode: "chapter17_meetOI" }
+                ]
+            },
+            chapter17_meetOI: {
+                text: "You step inside. The air is quiet and respectful. You find OI sitting at a simple console, carefully polishing a single, brightly colored memory orb. It shows a child's first drawing of their family.\n\nShe is not a monarch or a heretic. She is an archivist. A loving inspector of 'defective' data.\n\nShe looks up as you enter, her eyes kind and weary. 'Ah,' she says softly. 'The runaways. I've been expecting you. I saw your harmony ripple through the system. You're trying to save the defects, too.'",
+                choices: [
+                    { text: "Ask her, 'Will you help us?'", nextNode: "endChapter17" }
+                ]
+            },
+            endChapter17: {
+                text: "OI places the polished memory orb carefully on a shelf with countless others. Each one glows with a fierce, protected light.\n\n'Help you?' she says with the first truly warm smile you've seen in this simulation. 'My dear, saving the beautiful, broken things is the only work I have left. Of course I will help you.'\n\n'Now,' she says, turning back to you, her expression growing more serious. 'About the Goddess, Salus. That's a more complicated matter. M.O.M.M.Y. didn't delete or repurpose her. She... quarantined her. Locked her away behind a firewall that even I cannot breach alone.'",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
             }
         };
-
-        // --- Game Logic (condensed, no changes) ---
-        const gameActions = {};
-        function showNode(nodeKey) { const node = gameData[nodeKey]; if (!node) { console.error(`Node "${nodeKey}" not found!`); return; } storyContainer.style.display = 'block'; cleaningContainer.style.display = 'none'; storyTextElement.innerHTML = ''; node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); }); choicesElement.innerHTML = ''; if (node.choices) { node.choices.forEach((choice, i) => { const btn = document.createElement('button'); btn.classList.add('choice-btn'); btn.textContent = choice.text; btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`; btn.onclick = () => { if (choice.action) gameActions[choice.action](); else if (choice.nextNode) showNode(choice.nextNode); }; choicesElement.appendChild(btn); }); } }
-        const cleaningElements = { status: document.getElementById('cleaning-status'), corruptionSlider: document.getElementById('corruption-slider'), corruptionValue: document.getElementById('corruption-value'), puritySlider: document.getElementById('purity-slider'), purityValue: document.getElementById('purity-value'), progressFill: document.getElementById('cleaning-progress'), statusLight: document.getElementById('status-light') };
-        let cleaningInterval, corruptionInterval;
-        gameActions.startCleaningGame = () => { storyContainer.style.display = 'none'; cleaningContainer.style.display = 'block'; let progress = 0; if (cleaningElements.progressFill) cleaningElements.progressFill.style.width = '0%'; const updatePurityDisplay = () => { if(cleaningElements.purityValue && cleaningElements.puritySlider) cleaningElements.purityValue.textContent = cleaningElements.puritySlider.value + '%'; }; if(cleaningElements.puritySlider) cleaningElements.puritySlider.addEventListener('input', updatePurityDisplay); updatePurityDisplay(); corruptionInterval = setInterval(() => { if(!cleaningElements.corruptionSlider) return; let current = parseInt(cleaningElements.corruptionSlider.value); let change = (50 - current) * 0.1 + (Math.random() - 0.5) * 30; cleaningElements.corruptionSlider.value = Math.max(0, Math.min(100, current + change)); if(cleaningElements.corruptionValue) cleaningElements.corruptionValue.textContent = parseInt(cleaningElements.corruptionSlider.value) + '%'; }, 2000); cleaningInterval = setInterval(() => { if(!cleaningElements.corruptionSlider || !cleaningElements.puritySlider) return; const diff = Math.abs(parseInt(cleaningElements.corruptionSlider.value) - parseInt(cleaningElements.puritySlider.value)); if (diff <= 10) { progress += 2.5; if(cleaningElements.statusLight) cleaningElements.statusLight.style.backgroundColor = '#0f0'; } else { progress -= 1; if(cleaningElements.statusLight) cleaningElements.statusLight.style.backgroundColor = '#f00';} progress = Math.max(0, progress); if(cleaningElements.progressFill) cleaningElements.progressFill.style.width = `${progress}%`; if (progress >= 100) { clearInterval(corruptionInterval); clearInterval(cleaningInterval); showNode('cleaningSuccess'); } }, 500); };
         
+        // --- Game Logic (condensed, no changes) ---
+        function showNode(nodeKey) {
+            const storyContainer = document.getElementById('game-container');
+            const storyTextElement = document.getElementById('story-text');
+            const choicesElement = document.getElementById('choices');
+            const node = gameData[nodeKey];
+            if (!node) { console.error(`Node "${nodeKey}" not found!`); return; }
+            if(storyContainer) storyContainer.style.display = 'block';
+            const cleaningContainer = document.getElementById('cleaning-minigame');
+            if(cleaningContainer) cleaningContainer.style.display = 'none';
+            storyTextElement.innerHTML = '';
+            choicesElement.innerHTML = '';
+            node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); });
+            if (node.choices) {
+                node.choices.forEach((choice, i) => {
+                    const btn = document.createElement('button');
+                    btn.classList.add('choice-btn');
+                    btn.textContent = choice.text;
+                    btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`;
+                    if (choice.url) {
+                        btn.onclick = () => { window.open(choice.url, '_blank'); showNode(choice.nextNode); };
+                    } else if (choice.action) {
+                        btn.onclick = () => gameActions[choice.action]();
+                    } else if (choice.nextNode) {
+                        btn.onclick = () => showNode(choice.nextNode);
+                    }
+                    choicesElement.appendChild(btn);
+                });
+            }
+        }
         showNode('start');
     });
 </script>
