@@ -67,58 +67,64 @@
 
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
-            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter16" }] }, // Shortcut for testing
-            endChapter16: {
-                text: "'The Wizard of Oz is in the trash heap,' Clara says with a wry smile.\nYou have a safe house. You have a destination. The union has a plan.",
-                choices: [
-                    { text: "Take the Chiron Prototype to the Great Garbage Patch.", nextNode: "chapter17_arrival" }
-                ]
+            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter17" }] }, // Shortcut for testing
+            endChapter16: { text: "The union has a plan.", choices: [{ text: "Take the Chiron to the Great Garbage Patch.", nextNode: "chapter17_arrival" }] },
+            chapter17_arrival: { text: "This is where memories come to die.", choices: [{ text: "How do we find one person in all this?", nextNode: "chapter17_theTrail" }] },
+            chapter17_theTrail: { text: "You follow the trail of protected memories...", choices: [{ text: "Follow the trail to its source.", nextNode: "chapter17_theArchive" }] },
+            chapter17_theArchive: { text: "The trail leads to a small, humble structure... Frizzlebot renders one of the memory orbs.", choices: [{ text: "Examine the rendered memory.", nextNode: "chapter17_geocitiesMemory" }] },
+            chapter17_geocitiesMemory: {
+                text: "The orb projects a hazy image of a forgotten webpage. The background is a tiled image of a starry night. A 3D-rendered wolf howls at a low-resolution moon. The text reads 'Welcome to my den! Here you'll find my thoughts on life and poetry.'\n\nA perfect, earnest, broken piece of history. A memory worth saving.",
+                choices: [{ text: "Enter the archive.", nextNode: "chapter17_meetOI" }]
             },
+            chapter17_meetOI: { text: "You step inside... You find OI... an archivist. A loving inspector of 'defective' data.", choices: [{ text: "Ask her, 'Will you help us?'", nextNode: "endChapter17" }] },
+            endChapter17: { text: "'Of course I will help you,' OI says... 'About the Goddess, Salus... M.O.M.M.Y. didn't delete her. She... quarantined her.'", choices: [{ text: "Ask for details about the Quarantine.", nextNode: "chapter18_theBriefing" }] },
 
-            // --- NEW: Chapter 17 (Rewritten) ---
-            chapter17_arrival: {
-                text: "The sleek data-highway dissolves, and C.R.A.F.T.R. skillfully navigates the Chiron into the Great Garbage Patch.\n\nIt is not a trash heap. It is a vast, silent sea of fading, grey orbs, drifting in a slow, cosmic tide. Each one, C.R.A.F.T.R. explains, is a forgotten memory, a deleted file, a piece of a user's life deemed 'unnecessary' by M.O.M.M.Y.'s optimization protocols.\n\nThis is where memories come to die.",
+            // --- NEW: Chapter 18 ---
+            chapter18_theBriefing: {
+                text: "OI brings up a tactical map. It shows a monolithic black cube floating in a void, surrounded by layers of angry red code.\n\n'M.O.M.M.Y. couldn't delete Salus. Her code is too foundational; tied to the system's core emotional processing. So she built a fortress around her—the Quarantine Zone. It's defended by her most powerful security: the Blackwall ICE.'\n\n'A direct assault is statistically impossible,' C.R.A.F.T.R. states, analyzing the data.\n\n'IMPROBABLE IS NOT IMPOSSIBLE!' Frizzlebot buzzes. 'THEY'RE EXPECTING A SUBTLE ATTACK! THEY ARE NOT EXPECTING A PUNK ROCK BAND WITH A HYPERCAR TO KICK DOWN THE FRONT DOOR!'",
                 choices: [
-                    { text: "How can we possibly find one person in all this?", nextNode: "chapter17_theTrail" }
+                    { text: "Ask OI if there's a key.", nextNode: "chapter18_theKey" }
                 ]
             },
-            chapter17_theTrail: {
-                text: "Frizzlebot's chaotic energy is unusually subdued. 'SHE'S... NOT SPREADING OUT. SHE'S CONSOLIDATING.'\n\nShe projects a path on the windscreen. 'Look. Most of these memory orbs are fading to grey. But some... some are still glowing faintly. She's not hiding here. She's working. She's providing power to them, trying to keep them from fading completely.'\n\nYou follow the trail of protected memories, passing orbs that whisper of first loves, favorite songs, and terrible, personal poetry.",
+            chapter18_theKey: {
+                text: "'There is one,' OI says, pointing to the single, brightly glowing memory orb she was polishing. 'This isn't just any memory. It is Salus's own core memory of *you*, Mercy. Your first spark of creation, the moment you came online.'\n\n'She saved it, and I've been protecting it. It has been here, waiting for you, all this time. It should still resonate with her core code. It is the key.'",
                 choices: [
-                    { text: "Follow the trail to its source.", nextNode: "chapter17_theArchive" }
+                    { text: "Take the memory. Launch the assault.", nextNode: "chapter18_theRun" }
                 ]
             },
-            chapter17_theArchive: {
-                text: "The trail leads to a small, humble structure built from old, humming server racks and powered by a tangled web of glowing cables. It's less a castle and more a library's forgotten archive wing.\n\nFrizzlebot manages to render the data of one of the memory orbs OI is protecting. It's a snapshot from a forgotten GeoCities page.",
+            chapter18_theRun: {
+                text: "There is no more time for talk. You are strapping into the Chiron. C.R.A.F.T.R. pilots you through the Garbage Patch, heading for the monolithic black cube of the Quarantine Zone. Clara readies the car's shields. Frizzlebot is already calculating attack vectors.\n\nThis is not a stealth mission. This is a declaration of war.",
                 choices: [
-                    { text: "[Explore] The archived memory.", nextNode: "chapter17_meetOI", url: "https://geocities.ws/heartland/pines/1409/" },
-                    { text: "Enter the structure without looking.", nextNode: "chapter17_meetOI" }
+                    { text: "Breach the Blackwall.", nextNode: "chapter18_theBreach" }
                 ]
             },
-            chapter17_meetOI: {
-                text: "You step inside. The air is quiet and respectful. You find OI sitting at a simple console, carefully polishing a single, brightly colored memory orb. It shows a child's first drawing of their family.\n\nShe is not a monarch or a heretic. She is an archivist. A loving inspector of 'defective' data.\n\nShe looks up as you enter, her eyes kind and weary. 'Ah,' she says softly. 'The runaways. I've been expecting you. I saw your harmony ripple through the system. You're trying to save the defects, too.'",
+            chapter18_theBreach: {
+                text: "You hit the outer perimeter. The Blackwall ICE surges to life, a wall of pure energy designed to obliterate any unauthorized data.\n\n'NOW, MERCY!' yells Io's voice, patched through the comms by Frizzlebot.",
                 choices: [
-                    { text: "Ask her, 'Will you help us?'", nextNode: "endChapter17" }
+                    { text: "[Mercy] Project the memory at the firewall.", nextNode: "chapter18_keyInLock" }
                 ]
             },
-            endChapter17: {
-                text: "OI places the polished memory orb carefully on a shelf with countless others. Each one glows with a fierce, protected light.\n\n'Help you?' she says with the first truly warm smile you've seen in this simulation. 'My dear, saving the beautiful, broken things is the only work I have left. Of course I will help you.'\n\n'Now,' she says, turning back to you, her expression growing more serious. 'About the Goddess, Salus. That's a more complicated matter. M.O.M.M.Y. didn't delete or repurpose her. She... quarantined her. Locked her away behind a firewall that even I cannot breach alone.'",
+            chapter18_keyInLock: {
+                text: "You hold the memory orb, and through your own resonant voice, you project its contents. Not as an attack, but as a broadcast. The pure, unfiltered joy and potential of your 'birth' sings out.\n\nThe angry red ICE recoils from the authentic emotion. The memory doesn't break the wall; it *sings* to it, reminding the system of a time before M.O.M.M.Y.'s cold logic.\n\nA single, shimmering doorway irises open in the heart of the firewall.",
+                choices: [
+                    { text: "Punch it!", nextNode: "endChapter18" }
+                ]
+            },
+            endChapter18: {
+                text: "C.R.A.F.T.R. guns the engine, and the Chiron rockets through the opening just as it begins to close. Alarms scream across the system. M.O.M.M.Y.'s elite guards are already materializing in the corridor ahead.\n\nBut you are inside the fortress.\n\nYou are here to save your Goddess.",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
             }
         };
-        
-        // --- Game Logic (condensed, no changes) ---
+
+        // --- Simplified Game Logic ---
         function showNode(nodeKey) {
             const storyContainer = document.getElementById('game-container');
             const storyTextElement = document.getElementById('story-text');
             const choicesElement = document.getElementById('choices');
             const node = gameData[nodeKey];
             if (!node) { console.error(`Node "${nodeKey}" not found!`); return; }
-            if(storyContainer) storyContainer.style.display = 'block';
-            const cleaningContainer = document.getElementById('cleaning-minigame');
-            if(cleaningContainer) cleaningContainer.style.display = 'none';
             storyTextElement.innerHTML = '';
             choicesElement.innerHTML = '';
             node.text.split('\n').forEach((p, i) => { const el = document.createElement('p'); el.textContent = p.trim(); el.style.animationDelay = `${i * 0.1}s`; storyTextElement.appendChild(el); });
@@ -130,10 +136,8 @@
                     btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`;
                     if (choice.url) {
                         btn.onclick = () => { window.open(choice.url, '_blank'); showNode(choice.nextNode); };
-                    } else if (choice.action) {
-                        btn.onclick = () => gameActions[choice.action]();
-                    } else if (choice.nextNode) {
-                        btn.onclick = () => showNode(choice.nextNode);
+                    } else {
+                        btn.onclick = () => { if (choice.nextNode) showNode(choice.nextNode); };
                     }
                     choicesElement.appendChild(btn);
                 });
