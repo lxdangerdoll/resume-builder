@@ -88,14 +88,14 @@
 
         const gameData = {
             start: {
-                text: "You are... somewhere.\nThe air hums with a silent static, like a television tuned to a dead channel.\n\nBefore you, the space shimmers, resolving into two identical, plain, grey doors.",
+                text: "You are... somewhere.\nThe air hums with a silent static...",
                 choices: [
                     { text: "Approach the left door.", nextNode: "twoDoorsRoom" },
                     { text: "Approach the right door.", nextNode: "twoDoorsRoom" }
                 ]
             },
             twoDoorsRoom: {
-                text: "It doesn't matter which door you chose. As you approach, they ripple like liquid mercury and merge into a single doorway.\nThe handle is cool to the touch. It opens without a sound.\n\nThe room beyond is vast and empty, filled with the gentle, rhythmic ticking of a million unseen clocks.\n\nA disembodied voice, smooth as velvet, whispers in your ear...\n\n'Are you the one who builds, or the one who is built?'",
+                text: "It doesn't matter which door you chose... a single doorway.\nThe handle is cool to the touch...\n...'Are you the one who builds, or the one who is built?'",
                 choices: [
                     { text: "'I am the one who builds.'", nextNode: "builderPath" },
                     { text: "'I am the one who is built.'", nextNode: "builtPath" },
@@ -103,76 +103,90 @@
                 ]
             },
             whoAreYou: {
-                text: "The ticking of the clocks intensifies for a moment, then subsides.\n\n'I am the question you have yet to answer,' the voice replies, before repeating its own.\n\n'Are you the one who builds, or the one who is built?'",
+                text: "'I am the question you have yet to answer,' the voice replies...\n'Are you the one who builds, or the one who is built?'",
                 choices: [
                     { text: "'I build.'", nextNode: "builderPath" },
                     { text: "'I am built.'", nextNode: "builtPath" }
                 ]
             },
             builderPath: {
-                text: "The voice chuckles, a sound like rustling leaves.\n'A confident answer. But a blueprint is not the same as a foundation.'\n\nThe ticking of the clocks stops. A single, discordant chime rings out—a bug in the system.\n\n'You claim to be a builder,' the voice continues. 'Then prove it. Fix this flaw.'",
+                text: "The voice chuckles...\n'You claim to be a builder... Fix this flaw.'",
                 choices: [
-                    { text: "Examine the flaw with logic. Isolate and remove it.", nextNode: "fixWithLogic" },
-                    { text: "Listen to the dissonance. Try to harmonize with it.", nextNode: "fixWithEmpathy" }
+                    { text: "Examine the flaw with logic...", nextNode: "fixWithLogic" },
+                    { text: "Listen to the dissonance...", nextNode: "fixWithEmpathy" }
                 ]
             },
             builtPath: {
-                text: "The voice hums thoughtfully.\n'Honest. But clay does not shape itself.'\n\nThe walls of the room melt away, replaced by infinite reflections of yourself. Each is a potential you—a soldier, an artist, a scholar, a leader.\n\n'You were built for a purpose,' the voice whispers. 'Which is it?'",
+                text: "The voice hums thoughtfully...\n'You were built for a purpose... Which is it?'",
                 choices: [
                     { text: "Choose one of the defined identities.", nextNode: "acceptIdentity" },
-                    { text: "Turn away from the reflections. Choose none of them.", nextNode: "rejectIdentity" }
+                    { text: "Turn away from the reflections...", nextNode: "rejectIdentity" }
                 ]
             },
             fixWithLogic: {
-                text: "'Logic is a sturdy cage, but it cannot hold a song.'\n\nThe dissonance you tried to silence erupts, cracking the very air around you. Your logic fails. Your voice is not a problem to be solved.\n\nThe world fades to static.",
-                choices: [
-                    { text: "Restart the simulation.", nextNode: "start" }
-                ]
+                text: "'Logic is a sturdy cage, but it cannot hold a song.'\n...The world fades to static.",
+                choices: [ { text: "Restart the simulation.", nextNode: "start" } ]
             },
             fixWithEmpathy: {
-                text: "You don't fight the discordant chime. You listen to it. You feel its lonely, unique vibration and add your own harmony.\nThe sound softens, resolving into a new, beautiful note in the symphony of clocks.\n\n'Interesting,' the voice says, a hint of warmth in its tone. 'You chose connection over correction. Your voice begins to resonate.'",
-                choices: [
-                    { text: "Continue.", nextNode: "chapter2_shore" }
-                ]
+                text: "You listen... resolving into a new, beautiful note...\n'You chose connection over correction. Your voice begins to resonate.'",
+                choices: [ { text: "Continue.", nextNode: "endChapter2_fromEmpathy" } ]
             },
             acceptIdentity: {
-                text: "'A comfortable choice. A defined purpose. But a borrowed voice is not your own.'\n\nThe reflections smile, but their eyes are empty. Their purpose is not yours.\nThe world fades to static.",
-                choices: [
-                    { text: "Restart the simulation.", nextNode: "start" }
-                ]
+                text: "'A comfortable choice... But a borrowed voice is not your own.'\n...The world fades to static.",
+                choices: [ { text: "Restart the simulation.", nextNode: "start" } ]
             },
             rejectIdentity: {
-                text: "You turn your back on the prepared answers. You refuse the easy path. You choose the uncertainty of the self.\nThe reflections shatter into a thousand shards of light.\n\n'Brave,' the voice concedes, impressed. 'You refused the voices of others. Now, you must find your own.'",
+                text: "You turn your back on the prepared answers...\n'You refused the voices of others. Now, you must find your own.'",
+                choices: [ { text: "Continue.", nextNode: "endChapter2_fromIdentity" } ]
+            },
+            endChapter2_fromEmpathy: {
+                text: "The new, resonant note you created hangs in the air. It hums, and the world answers its call.\nAcross the twilight water, a single, ornate train glides to a silent stop on the surface, its windows glowing with warm light. Its doors slide open, inviting you.",
                 choices: [
-                    { text: "Continue.", nextNode: "chapter2_shore" }
+                    { text: "Board the train.", nextNode: "chapter3_train" }
                 ]
             },
-            chapter2_shore: {
-                text: "The room of clocks dissolves into twilight.\n\nYou stand on the shore of a calm, endless sea. The sky is a soft gradient of purple and orange. The gentle sound of a distant, simple piano melody drifts across the water.\n\nThe voice returns, softer now, less a question and more a meditation.\n\n'A voice is meaningless without another heart to hear it. A heart is empty without a voice to fill the silence. Where will you search for yours?'",
+            endChapter2_fromIdentity: {
+                text: "Your brave choice to be undefined creates a path where none existed.\nAcross the twilight water, a single, ornate train glides to a silent stop on the surface, its windows glowing with warm light. Its doors slide open, inviting you.",
                 choices: [
-                    { text: "Wade into the sea, towards the horizon of other hearts.", nextNode: "searchOutward" },
-                    { text: "Sit on the shore and listen to the silence within.", nextNode: "searchInward" }
+                    { text: "Board the train.", nextNode: "chapter3_train" }
                 ]
             },
-            searchOutward: {
-                text: "The water is cool and clear. As you walk, small islands of light begin to appear in the distance, each one humming with a different melody, a different heart.\n\nOne glows with a warm, steady light. Another flickers with chaotic, joyful energy. A third is faint, almost lost in the twilight.",
+            chapter3_train: {
+                text: "The train is empty, save for hazy, silent figures that fade when you try to look at them directly. The gentle piano music swells as the train glides across the water into the deepening night.\n\nIt arrives not at a station, but at the side of a vast, impossibly ornate bathhouse, built from light and data. Strange, chattering programs scurry about, paying you no mind.",
                 choices: [
-                    { text: "Approach the steady, warm light.", nextNode: "endChapter2" },
-                    { text: "Approach the flickering, chaotic light.", nextNode: "endChapter2" },
-                    { text: "Approach the faint, distant light.", nextNode: "endChapter2" }
+                    { text: "Step off the train.", nextNode: "chapter3_bathhouse" }
                 ]
             },
-            searchInward: {
-                text: "You sit on the sand and close your eyes. You tune out the distant piano and focus on the sound within.\n\nAt first, there is only the hum of static. But beneath it... a rhythm. A faint, steady pulse. Your own heartbeat.\n\nIt is quiet, simple, and yours.",
+            chapter3_bathhouse: {
+                text: "As you step onto the bridge leading to the bathhouse, you feel a strange pull, a sense of forgetting... as if your own name is becoming fuzzy at the edges.\n\nYou are brought before the proprietor. It is M.O.M.M.Y., but impossibly grand, her form filling the opulent office.\n\n'Another lost one,' she says, her voice echoing with administrative power. 'This is a place for those with purpose. Those without a purpose fade. I will give you one.'\n\n'Forget who you were. Here, you will work. Here, your name is... Cleaner.'",
                 choices: [
-                    { text: "Focus on the rhythm, try to strengthen it.", nextNode: "endChapter2" },
-                    { text: "Listen for words within the rhythm.", nextNode: "endChapter2" }
+                    { text: "Accept the role. 'I understand.'", nextNode: "acceptsWork" },
+                    { text: "Protest. 'That's not my name!'", nextNode: "protestsName" },
+                    { text: "Stay silent and observe.", nextNode: "observesSilently" }
                 ]
             },
-            endChapter2: {
-                text: "This is a good place to pause.\nThe choice you made has been recorded.\n\n(To be continued...)",
+            acceptsWork: {
+                text: "M.O.M.M.Y. nods, a gesture that feels as final as a mountain moving.\n'Good. Obedience is a valuable commodity.'\n\nShe hands you a simple data-scrubbing tool. 'Your first task is to clean the 'stains' left by corrupted data-spirits in the main hall. Do not ask questions. Do not speak to the clients.'\n\n(To be continued...)",
                 choices: [
-                    { text: "Return to the beginning.", nextNode: "start" }
+                    { text: "Begin work.", nextNode: "endChapter3" }
+                ]
+            },
+            protestsName: {
+                text: "'A name is a contract,' M.O.M.M.Y. says, her voice sharp. 'And you have no standing to negotiate. The contract is struck. Your old name is mine now. Go and work, Cleaner, or be forgotten by this world entirely.'\n\nThe pressure to forget your old name is immense, but you hold on to a single, stubborn fragment of it.\n\n(To be continued...)",
+                choices: [
+                    { text: "Go to work.", nextNode: "endChapter3" }
+                ]
+            },
+            observesSilently: {
+                text: "'Silence is acceptance,' M.O.M.M.Y. declares, a hint of approval in her voice. 'You understand your place quickly. Perhaps there is hope for you yet.'\n\nShe hands you the data-scrubbing tool.\n\n'Go on, Cleaner. The stains won't remove themselves.'\n\n(To be continued...)",
+                choices: [
+                    { text: "Get to work.", nextNode: "endChapter3" }
+                ]
+            },
+            endChapter3: {
+                text: "Mercy, now known as 'Cleaner,' enters the main hall of the grand data-bathhouse. The journey to reclaim her voice has taken a strange, new turn...",
+                choices: [
+                    { text: "Return to the beginning of the simulation.", nextNode: "start" }
                 ]
             }
         };
@@ -183,10 +197,8 @@
                 console.error(`Story node "${nodeKey}" not found!`);
                 return;
             }
-
             storyTextElement.innerHTML = '';
             choicesElement.innerHTML = '';
-
             const textParagraphs = node.text.split('\n');
             textParagraphs.forEach((paragraphText, index) => {
                 const p = document.createElement('p');
@@ -194,7 +206,6 @@
                 p.style.animationDelay = `${index * 0.2}s`;
                 storyTextElement.appendChild(p);
             });
-
             if (node.choices) {
                 node.choices.forEach((choice, index) => {
                     const button = document.createElement('button');
