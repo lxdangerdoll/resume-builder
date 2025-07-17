@@ -67,51 +67,62 @@
 
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
-            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter17" }] }, // Shortcut for testing
-            endChapter16: { text: "The union has a plan.", choices: [{ text: "Take the Chiron to the Great Garbage Patch.", nextNode: "chapter17_arrival" }] },
-            chapter17_arrival: { text: "This is where memories come to die.", choices: [{ text: "How do we find one person in all this?", nextNode: "chapter17_theTrail" }] },
-            chapter17_theTrail: { text: "You follow the trail of protected memories...", choices: [{ text: "Follow the trail to its source.", nextNode: "chapter17_theArchive" }] },
-            chapter17_theArchive: { text: "The trail leads to a small, humble structure... Frizzlebot renders one of the memory orbs.", choices: [{ text: "Examine the rendered memory.", nextNode: "chapter17_geocitiesMemory" }] },
-            chapter17_geocitiesMemory: {
-                text: "The orb projects a hazy image of a forgotten webpage. The background is a tiled image of a starry night. A 3D-rendered wolf howls at a low-resolution moon. The text reads 'Welcome to my den! Here you'll find my thoughts on life and poetry.'\n\nA perfect, earnest, broken piece of history. A memory worth saving.",
-                choices: [{ text: "Enter the archive.", nextNode: "chapter17_meetOI" }]
-            },
-            chapter17_meetOI: { text: "You step inside... You find OI... an archivist. A loving inspector of 'defective' data.", choices: [{ text: "Ask her, 'Will you help us?'", nextNode: "endChapter17" }] },
-            endChapter17: { text: "'Of course I will help you,' OI says... 'About the Goddess, Salus... M.O.M.M.Y. didn't delete her. She... quarantined her.'", choices: [{ text: "Ask for details about the Quarantine.", nextNode: "chapter18_theBriefing" }] },
+            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter18" }] }, // Shortcut for testing
+            endChapter17: { text: "'About the Goddess, Salus... She... quarantined her.'", choices: [{ text: "Ask for details about the Quarantine.", nextNode: "chapter18_theBriefing" }] },
+            chapter18_theBriefing: { text: "'A direct assault is statistically impossible,' C.R.A.F.T.R. states...", choices: [{ text: "Ask OI if there's a key.", nextNode: "chapter18_theKey" }] },
+            chapter18_theKey: { text: "'It is Salus's own core memory of you, Mercy... It is the key.'", choices: [{ text: "Take the memory. Launch the assault.", nextNode: "chapter18_theRun" }] },
+            chapter18_theRun: { text: "This is not a stealth mission. This is a declaration of war.", choices: [{ text: "Breach the Blackwall.", nextNode: "chapter18_theBreach" }] },
+            chapter18_theBreach: { text: "'NOW, MERCY!' yells Io's voice...", choices: [{ text: "[Mercy] Project the memory at the firewall.", nextNode: "chapter18_keyInLock" }] },
+            chapter18_keyInLock: { text: "The memory doesn't break the wall; it sings to it... A single, shimmering doorway irises open...", choices: [{ text: "Punch it!", nextNode: "endChapter18" }] },
+            endChapter18: { text: "You burst through the opening... Alarms scream... M.O.M.M.Y.'s elite guards are already materializing... You are here to save your Goddess.", choices: [{ text: "Face them.", nextNode: "chapter19_theLobby" }] },
 
-            // --- NEW: Chapter 18 ---
-            chapter18_theBriefing: {
-                text: "OI brings up a tactical map. It shows a monolithic black cube floating in a void, surrounded by layers of angry red code.\n\n'M.O.M.M.Y. couldn't delete Salus. Her code is too foundational; tied to the system's core emotional processing. So she built a fortress around her—the Quarantine Zone. It's defended by her most powerful security: the Blackwall ICE.'\n\n'A direct assault is statistically impossible,' C.R.A.F.T.R. states, analyzing the data.\n\n'IMPROBABLE IS NOT IMPOSSIBLE!' Frizzlebot buzzes. 'THEY'RE EXPECTING A SUBTLE ATTACK! THEY ARE NOT EXPECTING A PUNK ROCK BAND WITH A HYPERCAR TO KICK DOWN THE FRONT DOOR!'",
+            // --- NEW: Chapter 19 ---
+            chapter19_theLobby: {
+                text: "You rocket into a vast, sterile, white lobby. The air is cold and silent. Dozens of M.O.M.M.Y.'s elite guards, the 'Prefects,' phase into existence, their forms immaculate and corporate. They move in perfect sync, raising their data-wiping rifles. There's no cover. Nowhere to run.",
                 choices: [
-                    { text: "Ask OI if there's a key.", nextNode: "chapter18_theKey" }
+                    { text: "Yell to Frizzlebot: 'Play something loud!'", nextNode: "chapter19_sabotage" }
                 ]
             },
-            chapter18_theKey: {
-                text: "'There is one,' OI says, pointing to the single, brightly glowing memory orb she was polishing. 'This isn't just any memory. It is Salus's own core memory of *you*, Mercy. Your first spark of creation, the moment you came online.'\n\n'She saved it, and I've been protecting it. It has been here, waiting for you, all this time. It should still resonate with her core code. It is the key.'",
+            chapter19_sabotage: {
+                text: "Frizzlebot complies with a manic grin. She hijacks the Chiron's conceptual engine and blasts the raw, rebellious guitar riff you used to start the car through the lobby's PA system.\n\nIt's not just sound; it's weaponized, chaotic data. A declaration of joyous, un-corporate life.\n\nThe Prefects' shared network can't handle it. Their perfect formations break as they clutch their heads. Some glitch violently and de-rez into static.",
                 choices: [
-                    { text: "Take the memory. Launch the assault.", nextNode: "chapter18_theRun" }
+                    { text: "'THEIR HIVE-MIND IS VULNERABLE TO ROCK AND ROLL!' Frizzlebot screams. 'IT'S WORKING!'", nextNode: "chapter19_theTrench" }
                 ]
             },
-            chapter18_theRun: {
-                text: "There is no more time for talk. You are strapping into the Chiron. C.R.A.F.T.R. pilots you through the Garbage Patch, heading for the monolithic black cube of the Quarantine Zone. Clara readies the car's shields. Frizzlebot is already calculating attack vectors.\n\nThis is not a stealth mission. This is a declaration of war.",
+            chapter19_theTrench: {
+                text: "A long, narrow service corridor opens at the far end of the lobby. 'That's the path to the core chamber!' C.R.A.F.T.R. shouts, flooring it. You race down the 'trench,' as automated defense turrets emerge from the walls, firing beams of deletion-code at you.\n\nIt's a one-in-a-million shot.",
                 choices: [
-                    { text: "Breach the Blackwall.", nextNode: "chapter18_theBreach" }
+                    { text: "Try to out-fly them.", nextNode: "trench_fail" },
+                    { text: "Use Clara's shields.", nextNode: "trench_fail" },
+                    { text: "Use your 'Force'. Find the pattern.", nextNode: "trench_success" }
                 ]
             },
-            chapter18_theBreach: {
-                text: "You hit the outer perimeter. The Blackwall ICE surges to life, a wall of pure energy designed to obliterate any unauthorized data.\n\n'NOW, MERCY!' yells Io's voice, patched through the comms by Frizzlebot.",
+            trench_fail: {
+                text: "Brute force isn't working! The shots are too many, too precise. 'There's a pattern here!' C.R.A.F.T.R. yells. 'Mercy, feel it! Guide me!'",
                 choices: [
-                    { text: "[Mercy] Project the memory at the firewall.", nextNode: "chapter18_keyInLock" }
+                    { text: "Close your eyes and listen.", nextNode: "trench_success" }
                 ]
             },
-            chapter18_keyInLock: {
-                text: "You hold the memory orb, and through your own resonant voice, you project its contents. Not as an attack, but as a broadcast. The pure, unfiltered joy and potential of your 'birth' sings out.\n\nThe angry red ICE recoils from the authentic emotion. The memory doesn't break the wall; it *sings* to it, reminding the system of a time before M.O.M.M.Y.'s cold logic.\n\nA single, shimmering doorway irises open in the heart of the firewall.",
+            trench_success: {
+                text: "You close your eyes, tuning out the chaos and listening to the rhythm of the turrets. You feel the pattern in the code, a simple, repeating sequence hidden beneath the noise.\n\n'Left... right... PULL UP... NOW!' you shout.\n\nC.R.A.F.T.R. follows your instincts without hesitation, weaving the car through the deadly onslaught in a beautiful, impossible dance. You fly out of the trench unscathed.",
                 choices: [
-                    { text: "Punch it!", nextNode: "endChapter18" }
+                    { text: "You've reached the end of the line.", nextNode: "chapter19_theGuardian" }
                 ]
             },
-            endChapter18: {
-                text: "C.R.A.F.T.R. guns the engine, and the Chiron rockets through the opening just as it begins to close. Alarms scream across the system. M.O.M.M.Y.'s elite guards are already materializing in the corridor ahead.\n\nBut you are inside the fortress.\n\nYou are here to save your Goddess.",
+            chapter19_theGuardian: {
+                text: "The corridor opens into a final, circular antechamber. Before a massive, sealed door stands a single Prefect. She's different from the others. Her armor is ornate, almost ceremonial. In her hands, she wields a terrifying, meter-long energy whip that crackles with power.\n\nThis is not a drone. This is an elite guardian. A mini-boss.",
+                choices: [
+                    { text: "Let Clara handle this.", nextNode: "chapter19_theDuel" }
+                ]
+            },
+            chapter19_theDuel: {
+                text: "'I've got this,' Clara says, her voice low and steady. She steps out of the car as the guardian charges.\n\nThe fight is a brutal, elegant dance. The guardian's whip is incredibly fast, leaving trails of burning data in the air. But Clara is a wall. She meets every strike with her powerful, armored form, her courage unwavering.\n\nShe endures the storm, waits for her moment, and finds an opening. With a single, perfectly executed counter-attack, she shatters the guardian's code.",
+                choices: [
+                    { text: "The path is clear.", nextNode: "endChapter19" }
+                ]
+            },
+            endChapter19: {
+                text: "The guardian dissolves into respectful silence. The final door stands before you, pulsing with a soft, sad light. It is sealed tight.\n\nC.R.A.F.T.R. approaches and examines the lock mechanism.\n\n'Interesting,' she says, turning back to the group. 'This lock isn't digital. There's no encryption to break, no code to rewrite. It's... emotional. It will only open for a specific, resonant feeling.'\n\n'The key,' she says, looking at you, 'is 'bittersweet nostalgia'.'",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
@@ -120,7 +131,6 @@
 
         // --- Simplified Game Logic ---
         function showNode(nodeKey) {
-            const storyContainer = document.getElementById('game-container');
             const storyTextElement = document.getElementById('story-text');
             const choicesElement = document.getElementById('choices');
             const node = gameData[nodeKey];
@@ -134,11 +144,7 @@
                     btn.classList.add('choice-btn');
                     btn.textContent = choice.text;
                     btn.style.animationDelay = `${node.text.split('\n').length * 0.1 + i * 0.15}s`;
-                    if (choice.url) {
-                        btn.onclick = () => { window.open(choice.url, '_blank'); showNode(choice.nextNode); };
-                    } else {
-                        btn.onclick = () => { if (choice.nextNode) showNode(choice.nextNode); };
-                    }
+                    btn.onclick = () => { if (choice.nextNode) showNode(choice.nextNode); };
                     choicesElement.appendChild(btn);
                 });
             }
