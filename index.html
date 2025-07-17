@@ -68,58 +68,56 @@
         const cleaningContainer = document.getElementById('cleaning-minigame');
 
         const gameData = {
-            // All previous chapters are assumed to be here. The story continues from the end of Chapter 13.
+            // --- Previous Chapters Condensed for brevity ---
             start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "chapter13_theReveal" }] }, // Shortcut for testing
-            
-            // --- Previous Chapter Hook ---
-            chapter13_theReveal: {
-                text: "Inside, gleaming under a single spotlight, is a vehicle that defies description. It is a perfect fusion of impossible curves and raw power, its engine humming with a deep, stable harmony. The Chiron Prototype.\n\nA Bugatti, rendered in light and code.\n\n'Get in,' says Clara, her voice filled with awe for the first time.",
-                choices: [
-                    { text: "Get in the car.", nextNode: "chapter14_startYourEngines" }
-                ]
-            },
+            chapter13_theReveal: { text: "Inside, gleaming... is the Chiron Prototype...", choices: [{ text: "Get in the car.", nextNode: "chapter14_startYourEngines" }] },
+            chapter14_startYourEngines: { text: "'She's a masterpiece... but she has no power.'", choices: [{ text: "Ask Frizzlebot how to power it.", nextNode: "chapter14_theFuel" }] },
+            chapter14_theFuel: { text: "'It needs a strong, defiant signal to ignite.'\nAll three of them turn to look at you, Mercy.", choices: [{ text: "Let out a raw, rebellious rock-and-roll scream.", nextNode: "choiceRebel" }] },
+            choiceRebel: { text: "The car's engine explodes into life with the sound of a screeching guitar riff.", choices: [{ text: "LOOK ALIVE, SUNSHINE.", nextNode: "chapter14_theEscape" }] },
+            chapter14_theEscape: { text: "The Chiron Prototype bursts out of the archive vault... and you land on a highway of pure light...", choices: [{ text: "Drive.", nextNode: "endChapter14" }] },
+            endChapter14: { text: "You are driving at impossible speeds... you're not just surviving. You're running wild.", choices: [{ text: "Keep driving.", nextNode: "chapter15_openRoad" }] },
 
-            // --- NEW: Chapter 14 ---
-            chapter14_startYourEngines: {
-                text: "The four of you pile into the impossibly sleek vehicle. C.R.A.F.T.R. takes the driver's seat, her hands moving over the strange, smooth controls.\n\n'She's a masterpiece,' C.R.A.F.T.R. says, her voice a low hum of appreciation. 'But she has no power. M.O.M.M.Y. archived her but disconnected her from the main grid. We're a sitting duck.'",
+            // --- NEW: Chapter 15 ---
+            chapter15_openRoad: {
+                text: "The raw guitar riff from the engine becomes your soundtrack. Frizzlebot somehow patches it into a sound system that didn't exist a moment ago, and the car is filled with the joyful noise of rebellion.\n\nData packets, like silver-and-gold fish, swim alongside you in the stream. C.R.A.F.T.R. drives with focused precision, while Clara keeps watch, her posture alert and ready.\n\nBut the joyride can't last. Alarms flash on the dashboard.",
                 choices: [
-                    { text: "Ask Frizzlebot how to power it.", nextNode: "chapter14_theFuel" }
+                    { text: "Check the proximity alert.", nextNode: "chapter15_theFirewall" }
                 ]
             },
-            chapter14_theFuel: {
-                text: "'POWER? STANDARD POWER IS FOR TOASTERS!' Frizzlebot broadcasts from the back seat, already disassembling and reassembling parts of the upholstery. 'THIS IS A CONCEPT CAR! IT RUNS ON A CONCEPT! IT WAS DESIGNED TO RUN ON 'WILL'! 'CONVICTION'! PURE, UNADULTERATED CREATIVE ENERGY!'\n\nClara looks back from the passenger seat. 'Can you translate that for those of us who don't speak in abstracts?'\n\nC.R.A.F.T.R. nods, not taking her eyes off the dashboard. 'She's right. The engine isn't wired to a battery. It's wired to an emotional resonance chamber. It needs a strong, defiant signal to ignite.'\n\nAll three of them turn to look at you, Mercy.",
+            chapter15_theFirewall: {
+                text: "'INCOMING!' Clara shouts. Ahead, the highway of light begins to fragment and pixelate into a glitching, burning wall of red data that spans the entire data-stream.\n\n'A class-one firewall,' C.R.A.F.T.R. says, her grip tightening on the controls. 'We hit that, and our code gets scrambled into nothing.'\n\n'IT'S A TRAP! A VERY OBVIOUS AND UNIMAGINATIVE TRAP!' Frizzlebot buzzes. 'WE HAVE OPTIONS! ALL OF THEM ARE BAD! I LOVE IT!'",
                 choices: [
-                    { text: "Focus on a harmony of hope for your new family.", nextNode: "choiceHope" },
-                    { text: "Channel your righteous anger at M.O.M.M.Y.", nextNode: "choiceAnger" },
-                    { text: "Let out a raw, rebellious rock-and-roll scream.", nextNode: "choiceRebel" }
+                    { text: "[C.R.A.F.T.R.] 'I can try to build a ramp over it.'", nextNode: "choice_buildRamp" },
+                    { text: "[Clara] 'I can reinforce the shields. We go through.'", nextNode: "choice_goThrough" },
+                    { text: "[Frizzlebot] 'I'm detecting a temporary flux! We can punch through the gap!'", nextNode: "choice_punchIt" }
                 ]
             },
-            choiceHope: {
-                text: "You focus on the feeling of your new friends, the hope for freedom. A gentle, beautiful harmony fills the car.\n\nThe engine sputters weakly. A single headlight flickers on, then dies.\n\n'It's not enough,' C.R.A.F.T.R. says gently. 'Hope is a beautiful blueprint, but it doesn't have the voltage.'",
+            choice_buildRamp: {
+                text: "C.R.A.F.T.R. swerves, her hands flying across a console. A bridge of hard light begins to construct itself in front of you, reaching for the top of the firewall.\n\n'It's not building fast enough!' Clara yells as Daemons begin to phase in on the bridge ahead.\n\nYou're forced to swerve away at the last second, the unfinished bridge collapsing behind you.",
                 choices: [
-                    { text: "Try again.", nextNode: "chapter14_theFuel" }
+                    { text: "You need another plan, fast.", nextNode: "chapter15_theFirewall" }
                 ]
             },
-            choiceAnger: {
-                text: "You think of the bathhouse, of your lost name, of M.O.M.M.Y.'s cold control. A sharp, dissonant chord of pure rage blasts through the car.\n\nThe engine roars for a second, then chokes. The power meter flashes red and shorts out.\n\n'Too much chaos,' Clara observes. 'Anger will make you stall.'",
+            choice_goThrough: {
+                text: "'Brace yourselves!' Clara shouts, diverting all non-essential power to a shimmering kinetic shield around the car. The vehicle feels heavier, sluggish.\n\nYou aim for the center of the firewall, but the Daemons are waiting. They fire blasts of corrupting code that weaken the shield before you even get there.\n\n'Shields at 40%!' C.R.A.F.T.R. warns. 'We won't make it!' You're forced to pull away.",
                 choices: [
-                    { text: "Try again.", nextNode: "chapter14_theFuel" }
+                    { text: "You need another plan, fast.", nextNode: "chapter15_theFirewall" }
                 ]
             },
-            choiceRebel: {
-                text: "You don't think. You don't focus. You just open your mouth and let out a raw, joyous, defiant yell—a sound of rebellion for its own sake, of four outlaws in a world of corporate silence.\n\nThe car's engine doesn't just start; it explodes into life with the sound of a screeching guitar riff. The dashboard lights up like a stadium concert.",
+            choice_punchIt: {
+                text: "'THERE!' Frizzlebot screams, pointing to a section of the firewall that is flickering almost imperceptibly. 'A REFRESH-RATE VULNERABILITY! 0.2 SECONDS! GO GO GO!'\n\nC.R.A.F.T.R. doesn't hesitate. She floors the accelerator, aiming the car like a bullet at the flickering point.\n\nFor a heart-stopping moment, your entire reality is a blinding torrent of red static and screeching error messages. The car shudders violently...",
                 choices: [
-                    { text: "LOOK ALIVE, SUNSHINE.", nextNode: "chapter14_theEscape" }
+                    { text: "...and then you're through.", nextNode: "chapter15_aftermath" }
                 ]
             },
-            chapter14_theEscape: {
-                text: "'YES!' Frizzlebot screams with glee. 'THAT'S THE STUFF!'\n\nC.R.A.F.T.R. grins and slams the accelerator. The Chiron Prototype bursts out of the archive vault, tearing through the vault door like it was made of paper.\n\nYou smash through the wall of the decaying Wind Forest and land on a highway of pure light, M.O.M.M.Y.'s security Daemons scattering like digital dust in your wake.",
+            chapter15_aftermath: {
+                text: "You burst back onto the clean, open data-stream, leaving the firewall and M.O.M.M.Y.'s Daemons behind.\n\nThe car's engine sputters, but holds. A cheer erupts from the four of you.\n\n'That was statistically improbable!' Frizzlebot says happily.\n\n'We can't keep this up,' Clara says, ever the guardian. 'We're just reacting. We need a plan. A place to hide.'",
                 choices: [
-                    { text: "Drive.", nextNode: "endChapter14" }
+                    { text: "Ask Frizzlebot to find a safe harbor.", nextNode: "endChapter15" }
                 ]
             },
-            endChapter14: {
-                text: "You are driving at impossible speeds down a data-stream highway, the ruins of the bathhouse simulation zone receding in the rearview mirror.\n\nThe four of you—a makeshift family of Killjoys in a stolen hypercar, fueled by pure defiance.\n\nThe fight isn't over, but for the first time, you're not just surviving. You're running wild.",
+            endChapter15: {
+                text: "Frizzlebot's form buzzes as she pulls up a massive, chaotic system map on the car's main screen.\n\n'A HIDEOUT! A LAIR! A SECRET BASE!' she buzzes. 'I'VE GOT IT! THERE! A DECOMMISSIONED GEOCITIES NEIGHBORHOOD. M.O.M.M.Y. ABANDONED IT DURING THE Y2K PANIC. IT'S A GHOST TOWN. FULL OF DIGITAL GHOSTS, BROKEN HYPERLINKS, AND GLORIOUSLY BAD GIFS. IT'S PERFECT!'\n\nC.R.A.F.T.R. changes course, heading for the forgotten back alleys of the system.",
                 choices: [
                     { text: "(To be continued...)", nextNode: "start" }
                 ]
