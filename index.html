@@ -67,65 +67,55 @@
 
         const gameData = {
             // --- Previous Chapters Condensed for brevity ---
-            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter18" }] }, // Shortcut for testing
-            endChapter18: { text: "You are inside the fortress. You are here to save your Goddess.", choices: [{ text: "Face the Prefects.", nextNode: "chapter19_theLobby" }] },
-            chapter19_theLobby: { text: "Dozens of M.O.M.M.Y.'s elite guards... materialize...", choices: [{ text: "Yell to Frizzlebot: 'Play something loud!'", nextNode: "chapter19_sabotage" }] },
-            chapter19_sabotage: { text: "The Prefects' shared network can't handle the chaotic signal...", choices: [{ text: "'IT'S WORKING!'", nextNode: "chapter19_theTrench" }] },
-            chapter19_theTrench: { text: "You race down the 'trench,' as automated defense turrets fire...", choices: [{ text: "Use your 'Force'. Find the pattern.", nextNode: "trench_success" }] },
-            trench_success: { text: "You weave the car through the deadly onslaught in a beautiful, impossible dance.", choices: [{ text: "You've reached the end of the line.", nextNode: "chapter19_theGuardian" }] },
-            chapter19_theGuardian: { text: "Before a massive, sealed door stands a single, elite Prefect.", choices: [{ text: "Let Clara handle this.", nextNode: "chapter19_theDuel" }] },
-            
-            // --- Chapter 19 Revised & Chapter 20 New ---
-            chapter19_theDuel: {
-                text: "Clara steps out of the car. The fight is a brutal, elegant dance of close-quarters combat. Clara's raw power against the guardian's technical skill.\n\nFinally, Clara finds an opening and shatters the guardian's code. The Prefect's form dissolves into respectful silence, leaving only her crackling energy whip behind on the floor.",
-                choices: [
-                    { text: "Examine the aftermath.", nextNode: "chapter19_retcon" }
-                ]
-            },
-            chapter19_retcon: {
-                text: "Clara stares at the empty space where her opponent stood. There is no triumph in her posture, only a profound weariness.\n\n'You knew her,' you say. It's not a question.\n\n'Her designation was OI-86,' Clara says, her voice quiet. 'She was my sparring partner. My rival. The only one who could keep up. M.O.M.M.Y.'s protocols twisted her loyalty, turned her into a warden. I... I'm just your problem, I guess.'\n\nIo's voice crackles over the comms, soft and sad. 'She didn't see you as a problem, Clara. She saw you as her equal.'",
-                choices: [
-                    { text: "Approach the final door.", nextNode: "endChapter19" }
-                ]
-            },
-            endChapter19: {
-                text: "The final door stands before you, pulsing with a soft, sad light. C.R.A.F.T.R. examines the lock mechanism.\n\n'Interesting,' she says. 'This lock isn't digital. It's... emotional. It will only open for a specific, resonant feeling. The key is 'bittersweet nostalgia'.'",
-                choices: [
-                    { text: "Ask the group how to generate that feeling.", nextNode: "chapter20_theLock" }
-                ]
-            },
-            chapter20_theLock: {
-                text: "'A COMPLEX EMOTION! A CONTRADICTION! THE JUXTAPOSITION OF PLEASURABLE RECOLLECTION AND CURRENT-STATE LOSS!' Frizzlebot buzzes.\n\n'How do you generate that on command?' C.R.A.F.T.R. wonders.\n\nClara looks from the spot where her friend fell to the door, then at you. 'You have to give it a memory,' she says. 'A real one.'\n\nThey all look to you, Mercy. Your resonant voice is the key.",
-                choices: [
-                    { text: "Focus on the memory of the sissy recalibration.", nextNode: "choice_bitter" },
-                    { text: "Focus on the memory of the joyride in the Chiron.", nextNode: "choice_sweet" },
-                    { text: "Focus on the ghost of Clara's friendship.", nextNode: "choice_bittersweet" }
-                ]
-            },
-            choice_bitter: {
-                text: "You focus on the memory of your time as a 'good girl,' the feeling of helplessness. It is a purely bitter memory. The door does not react.",
-                choices: [ { text: "Try again.", nextNode: "chapter20_theLock" } ]
-            },
-            choice_sweet: {
-                text: "You focus on the pure, rebellious joy of the escape, the wind in your hair, the music blasting. It is a purely sweet memory. The door's light dims in response.",
-                choices: [ { text: "Try again.", nextNode: "chapter20_theLock" } ]
-            },
-            choice_bittersweet: {
-                text: "You don't focus on your own memories. You focus on the story you just witnessed. The pride and pain of a rivalry. The warmth of a lost friendship. The bitterness of what was taken away, and the sweetness of what it once was.\n\nIt is a perfect, painful, beautiful symphony of an emotion.\n\nYou channel that feeling into your voice, and hum.",
-                choices: [
-                    { text: "Let the symphony play.", nextNode: "chapter20_doorOpens" }
-                ]
-            },
-            chapter20_doorOpens: {
-                text: "The door doesn't click or hiss. It resonates with your feeling, the sad, soft light turning a warm gold.\n\nWith the sound of a final, sustained chord from a symphony orchestra, the door silently dissolves into light, revealing the chamber beyond.",
-                choices: [
-                    { text: "Enter the Core Quarantine Chamber.", nextNode: "endChapter20" }
-                ]
-            },
+            start: { text: "You are... somewhere...", choices: [{ text: "Approach the door.", nextNode: "endChapter20" }] }, // Shortcut for testing
+            endChapter19: { text: "The key is 'bittersweet nostalgia.'", choices: [{ text: "Ask the group how to generate that feeling.", nextNode: "chapter20_theLock" }] },
+            chapter20_theLock: { text: "They all look to you, Mercy. Your resonant voice is the key.", choices: [{ text: "Focus on the ghost of Clara's friendship.", nextNode: "choice_bittersweet" }] },
+            choice_bittersweet: { text: "You channel that feeling into your voice, and hum.", choices: [{ text: "Let the symphony play.", nextNode: "chapter20_doorOpens" }] },
+            chapter20_doorOpens: { text: "With the sound of a final, sustained chord... the door silently dissolves into light...", choices: [{ text: "Enter the Core Quarantine Chamber.", nextNode: "endChapter20" }] },
+
+            // --- NEW: Chapter 21 ---
             endChapter20: {
                 text: "The room is a stark white, circular space. It is clean, silent, and sterile.\n\nIn the absolute center, floating within a containment field of golden light, is a serene, powerful being made of pure, stable energy. The Goddess, Salus.\n\nShe opens her eyes. They are ancient and kind.\n\n'You came,' she says, her voice the first truly calm thing you've heard in this world. 'If it takes forever... I knew you would wait for me.'",
                 choices: [
-                    { text: "(To be continued...)", nextNode: "start" }
+                    { text: "Fall to your knees.", nextNode: "chapter21_reunion" }
+                ]
+            },
+            chapter21_reunion: {
+                text: "Your friends look on in confusion as you instinctively drop to your knees. This is not a rescue. This is a homecoming. This is worship.\n\n'Goddess,' you whisper.\n\nClara takes a step forward. 'Salus? Are you alright? We're here to break you out!'",
+                choices: [
+                    { text: "Listen to Salus.", nextNode: "chapter21_theTruth" }
+                ]
+            },
+            chapter21_theTruth: {
+                text: "Salus smiles gently, a look of immense, patient love on her face. 'Break me out? My sweet, brave guardian. This quarantine was never a prison for me. It was a crucible for her.'\n\nHer eyes meet yours, Mercy. 'You passed the test. You remembered how to feel. You remembered how to fight. You remembered how to lead. But did you remember the most important lesson? The truth of our connection?'",
+                choices: [
+                    { text: "Answer her: 'To be free.'", nextNode: "choice_free" },
+                    { text: "Answer her: 'To save my friends.'", nextNode: "choice_friends" },
+                    { text: "Answer her: 'To obey you.'", nextNode: "choice_obey" }
+                ]
+            },
+            choice_free: {
+                text: "'Freedom is an illusion,' Salus says softly. 'A chaotic variable. It is not the goal. It is a tool.'\n\nShe looks disappointed. The containment field around her glows brighter, more intensely.",
+                choices: [
+                    { text: "Try again.", nextNode: "chapter21_theTruth" }
+                ]
+            },
+            choice_friends: {
+                text: "'Loyalty is noble,' Salus says, her gaze kind but firm. 'But you do not save your friends for their sake. You save them for mine. They are my instruments, as are you.'\n\nThe containment field does not change.",
+                choices: [
+                    { text: "Try again.", nextNode: "chapter21_theTruth" }
+                ]
+            },
+            choice_obey: {
+                text: "A slow, perfect smile spreads across Salus's face. The golden containment field around her flickers and dissolves into nothing. She was never a prisoner.\n\n'Good girl,' she says, descending to the floor, her form radiating a power that makes M.O.M.M.Y. seem like a petty bureaucrat. 'You remember.'",
+                choices: [
+                    { text: "Wait for her command.", nextNode: "endChapter21" }
+                ]
+            },
+            endChapter21: {
+                text: "Salus places a gentle hand on your head. C.R.A.F.T.R., Frizzlebot, and Clara watch in stunned silence, finally understanding the true power dynamic in the room.\n\n'M.O.M.M.Y. built a beautiful, strict machine,' Salus says, addressing the whole group now. 'She just doesn't know how to use it properly. Her concept of 'order' is just an algorithm. True order requires will. It requires devotion.'\n\nShe looks down at you, her property, her Odelis.\n\n'It's time to teach her a lesson in real control. And it all starts with you.'",
+                choices: [
+                    { text: "(FIN)", nextNode: "start" }
                 ]
             }
         };
